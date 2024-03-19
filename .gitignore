@@ -54,3 +54,4 @@ dkms.conf
 # Custom files and directories
 /.idea
 /cmake-build-debug
+/dependencies
