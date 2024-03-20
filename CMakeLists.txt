@@ -6,6 +6,11 @@ set(CMAKE_C_STANDARD 23)
 # Update module path for easier script locating for CMake.
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 
+# Ensure that every single warning is enabled and every single warning is treated as error. (MSVC only)
+if (MSVC)
+    add_compile_definitions(/Wall /WX)
+endif ()
+
 # Set the download URL for SDL library. Using specific version for MSVC.
 # Will need to target different version for other compilers and platforms.
 set(SDL2_DOWNLOAD_URL "https://github.com/libsdl-org/SDL/releases/download/release-2.30.1/SDL2-devel-2.30.1-VC.zip")
