@@ -1,4 +1,4 @@
-#include "game.h"
+#include "scene.h"
 
 int main(int argc, char* argv[]) {
     // Try to initialize dependencies first.
@@ -9,6 +9,7 @@ int main(int argc, char* argv[]) {
     // Try to create platform context.
     if (game_createPlatformContext(640, 480, "Bomberman Remake") == SUCCESS) {
         // We have the game's platform context here. Start to update scene.
+        scene_tick(game_platformContext);
 
         // Clear the platform context after the main loop, we are done with it.
         game_clearPlatformContext();
