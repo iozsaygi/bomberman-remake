@@ -2,7 +2,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-void debugger_log(enum log_level logLevel, const char* message, ...) {
+void debugger_log(enum debugger_logLevel logLevel, const char* message, ...) {
     va_list args;
     const char* tag = NULL;
 

@@ -1,12 +1,12 @@
 #ifndef DEBUGGER_H
 #define DEBUGGER_H
 
-enum log_level {
+enum debugger_logLevel {
     CRITICAL,
     TRACE,
     WARNING
 };
 
-void debugger_log(enum log_level logLevel, const char* message, ...);
+void debugger_log(enum debugger_logLevel logLevel, const char* message, ...);
 
 #endif// !DEBUGGER_H
