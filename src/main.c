@@ -1,12 +1,21 @@
-#include "debugger.h"
-#include <SDL.h>
+#include "game.h"
 
 int main(int argc, char* argv[]) {
-    if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        debugger_log(CRITICAL, "Failed to initialize SDL with video subsystem, the reason was: %s", SDL_GetError());
+    // Try to initialize dependencies first.
+    if (game_initializeDependencies() == FAILURE) {
         return -1;
     }
 
-    SDL_Quit();
+    // Try to create platform context.
+    if (game_createPlatformContext(640, 480, "Bomberman Remake") == SUCCESS) {
+        // We have the game's platform context here. Start to update scene.
+
+        // Clear the platform context after the main loop, we are done with it.
+        game_clearPlatformContext();
+    }
+
+    // Terminate initialized game dependencies.
+    game_terminateDependencies();
+
     return 0;
 }
