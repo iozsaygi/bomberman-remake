@@ -8,6 +8,7 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
 
 # Ensure that every single warning is enabled and every single warning is treated as error. (MSVC only)
 if (MSVC)
+    message(STATUS "Adding compile definitions for MSVC")
     add_compile_definitions(/Wall /WX)
 endif ()
 
@@ -19,6 +20,7 @@ set(SDL2_DOWNLOAD_URL "https://github.com/libsdl-org/SDL/releases/download/relea
 set(SDL2_EXTRACTION_DIRECTORY "${CMAKE_SOURCE_DIR}/dependencies/SDL2")
 
 # Download and extract SDL library.
+message(STATUS "Trying to download and extract SDL library")
 include(FetchContent)
 FetchContent_Declare(SDL2 URL ${SDL2_DOWNLOAD_URL} SOURCE_DIR ${SDL2_EXTRACTION_DIRECTORY})
 FetchContent_MakeAvailable(SDL2)
@@ -31,6 +33,7 @@ find_package(SDL2 REQUIRED)
 # Add SDL as include directory.
 include_directories(${SDL2_INCLUDE_DIRECTORIES})
 
+message(STATUS "Locating source files for executable linking")
 add_executable(bomberman_remake src/main.c
         src/debugger.c
         src/game.c
