@@ -28,7 +28,8 @@ include_directories(${SDL2_INCLUDE_DIRECTORIES})
 
 add_executable(bomberman_remake src/main.c
         src/debugger.c
-        src/game.c)
+        src/game.c
+        src/scene.c)
 
 # Link the SDL library.
 target_link_libraries(bomberman_remake PRIVATE ${SDL2_LIBRARIES})
