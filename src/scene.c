@@ -16,7 +16,7 @@ void scene_tick(struct game_platformContext gamePlatformContext) {
         }
 
         SDL_RenderClear(gamePlatformContext.renderer);
-        SDL_SetRenderDrawColor(gamePlatformContext.renderer, 0x00, 0x00, 0x00, 0x00);
+        SDL_SetRenderDrawColor(gamePlatformContext.renderer, 0x00, 0x00, 0x00, 0xFF);
 
         // Render player first.
         player_render(gamePlatformContext);
