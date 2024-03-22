@@ -3,4 +3,4 @@
 
 #define DEFAULT_ENTITY_SCALE 32
 
-#endif// !ENTITY_PROPS
+#endif// !ENTITY_PROPS_H

@@ -11,7 +11,7 @@ void scene_tick(struct game_platformContext gamePlatformContext) {
 
     while (tickFlag == 1) {
         enum eventDispatcher_eventType frameEvent = eventDispatcher_handleEvents();
-        if (frameEvent == SHUTDOWN) {
+        if (frameEvent == SHUTDOWN || frameEvent == KEY_DOWN_ESCAPE) {
             tickFlag = 0;
         }
 

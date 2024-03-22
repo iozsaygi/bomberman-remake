@@ -18,6 +18,8 @@ enum eventDispatcher_eventType eventDispatcher_handleEvents() {
                     return KEY_DOWN_S;
                 } else if (event.key.keysym.sym == SDLK_d) {
                     return KEY_DOWN_D;
+                } else if (event.key.keysym.sym == SDLK_ESCAPE) {
+                    return KEY_DOWN_ESCAPE;
                 }
         }
     }
