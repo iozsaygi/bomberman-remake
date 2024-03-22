@@ -26,6 +26,12 @@ void player_tick(enum eventDispatcher_eventType frameEvent) {
         case KEY_DOWN_D:
             player_transform.position.x += player_movement.speed;
             break;
+        case NONE:
+            break;
+        case SHUTDOWN:
+            break;
+        case KEY_DOWN_SPACE:
+            break;
     }
 }
 
