@@ -8,6 +8,7 @@ int main(int argc, char* argv[]) {
 
     // Try to create platform context.
     if (game_createPlatformContext(640, 480, "Bomberman: Remake") == SUCCESS) {
+        scene_initialize();
         // We have the game's platform context here. Start to update scene.
         scene_tick(game_platformContext);
 
