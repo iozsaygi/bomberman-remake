@@ -1,14 +1,13 @@
 #include "scene.h"
+#include "event_dispatcher.h"
 
 void scene_tick(struct game_platformContext gamePlatformContext) {
     unsigned char tickFlag = 1;
 
-    SDL_Event event;
     while (tickFlag == 1) {
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
-                tickFlag = 0;
-            }
+        enum eventDispatcher_eventType frameEvent = eventDispatcher_handleEvents();
+        if (frameEvent == SHUTDOWN) {
+            tickFlag = 0;
         }
 
         SDL_RenderClear(gamePlatformContext.renderer);
