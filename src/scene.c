@@ -15,10 +15,13 @@ void scene_tick(struct game_platformContext gamePlatformContext) {
             tickFlag = 0;
         }
 
+        // Update order.
+        player_tick(frameEvent);
+
         SDL_RenderClear(gamePlatformContext.renderer);
         SDL_SetRenderDrawColor(gamePlatformContext.renderer, 0x00, 0x00, 0x00, 0xFF);
 
-        // Render player first.
+        // Render order.
         player_render(gamePlatformContext);
 
         SDL_RenderPresent(gamePlatformContext.renderer);
