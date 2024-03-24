@@ -40,6 +40,7 @@ add_executable(bomberman_remake src/main.c
         src/scene.c
         src/event_dispatcher.c
         src/player.c
+        src/node.c
 )
 
 # Link the SDL library.
