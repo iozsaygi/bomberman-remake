@@ -1,9 +1,11 @@
 #include "scene.h"
 #include "event_dispatcher.h"
+#include "map.h"
 #include "player.h"
 
 void scene_initialize() {
     player_initialize();
+    map_initialize();
 }
 
 void scene_tick(struct game_platformContext gamePlatformContext) {
@@ -23,6 +25,7 @@ void scene_tick(struct game_platformContext gamePlatformContext) {
 
         // Render order.
         player_render(gamePlatformContext);
+        map_render(gamePlatformContext);
 
         SDL_RenderPresent(gamePlatformContext.renderer);
     }
