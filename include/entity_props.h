@@ -1,6 +1,6 @@
 #ifndef ENTITY_PROPS_H
 #define ENTITY_PROPS_H
 
-#define DEFAULT_ENTITY_SCALE 32
+#define DEFAULT_ENTITY_SCALE 16
 
 #endif// !ENTITY_PROPS_H
