@@ -5,8 +5,8 @@ struct player_transform player_transform;
 struct player_movement player_movement;
 
 void player_initialize() {
-    player_transform.position.x = 360;
-    player_transform.position.y = 150;
+    player_transform.position.x = 120;
+    player_transform.position.y = 100;
     player_transform.scale.x = DEFAULT_ENTITY_SCALE * 1;
     player_transform.scale.y = DEFAULT_ENTITY_SCALE * 1;
     player_movement.speed = 5.0f;
