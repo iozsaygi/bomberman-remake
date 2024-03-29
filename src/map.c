@@ -1,6 +1,6 @@
 #include "map.h"
 
-struct node map_nodes[1];
+struct node map_nodes[MAP_LENGTH];
 
 void map_initialize() {
     struct node dummyNode = {
