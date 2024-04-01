@@ -12,10 +12,10 @@ void map_initialize() {
             map_nodes[x][y].id.context = id;
 
             // Calculate the position of the node.
-            map_nodes[x][y].position.x = (float)(x * NODE_SCALE);
-            map_nodes[x][y].position.y = (float)(y * NODE_SCALE);
+            map_nodes[x][y].position.x = (float) (x * NODE_SCALE);
+            map_nodes[x][y].position.y = (float) (y * NODE_SCALE);
 
-            // 
+            //
         }
     }
 }
@@ -28,8 +28,8 @@ void map_render(struct game_platformContext gamePlatformContext) {
     for (int x = 0; x < MAP_WIDTH; x++) {
         for (int y = 0; y < MAP_HEIGHT; y++) {
             SDL_Rect renderRect;
-            renderRect.x = (int)(map_nodes[x][y].position.x);
-            renderRect.y = (int)(map_nodes[x][y].position.y);
+            renderRect.x = (int) (map_nodes[x][y].position.x);
+            renderRect.y = (int) (map_nodes[x][y].position.y);
             renderRect.w = NODE_SCALE;
             renderRect.h = NODE_SCALE;
 
