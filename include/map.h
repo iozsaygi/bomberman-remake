@@ -14,6 +14,9 @@
 extern struct node map_nodes[MAP_WIDTH][MAP_HEIGHT];
 
 void map_initialize();
+
+void map_convertNodeIDToCoordinate(int id, int* x, int* y);
+
 void map_render(struct game_platformContext gamePlatformContext);
 
 #endif// !MAP_H
