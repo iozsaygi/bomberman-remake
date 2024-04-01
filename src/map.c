@@ -1,4 +1,5 @@
 #include "map.h"
+#include "debugger.h"
 
 struct node map_nodes[MAP_WIDTH][MAP_HEIGHT];
 
@@ -45,6 +46,8 @@ void map_initialize() {
             }
         }
     }
+
+    debugger_log(TRACE, "Initialized the game map with %d nodes", MAP_WIDTH * MAP_HEIGHT);
 }
 
 void map_render(struct game_platformContext gamePlatformContext) {
