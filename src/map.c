@@ -15,7 +15,34 @@ void map_initialize() {
             map_nodes[x][y].position.x = (float) (x * NODE_SCALE);
             map_nodes[x][y].position.y = (float) (y * NODE_SCALE);
 
-            //
+            // Calculate and assign possible neighbors.
+            // Top neighbor.
+            if (y == 0) {
+                map_nodes[x][y].neighbors[0].context = NODE_INVALID_NEIGHBOR_ID;
+            } else {
+                map_nodes[x][y].neighbors[0].context = x * MAP_HEIGHT + (y - 1);
+            }
+
+            // Bottom neighbor.
+            if (y == MAP_HEIGHT - 1) {
+                map_nodes[x][y].neighbors[1].context = NODE_INVALID_NEIGHBOR_ID;
+            } else {
+                map_nodes[x][y].neighbors[1].context = x * MAP_HEIGHT + (y + 1);
+            }
+
+            // Left neighbor.
+            if (x == 0) {
+                map_nodes[x][y].neighbors[2].context = NODE_INVALID_NEIGHBOR_ID;
+            } else {
+                map_nodes[x][y].neighbors[2].context = (x - 1) * MAP_HEIGHT + y;
+            }
+
+            // Right neighbor.
+            if (x == MAP_WIDTH - 1) {
+                map_nodes[x][y].neighbors[3].context = NODE_INVALID_NEIGHBOR_ID;
+            } else {
+                map_nodes[x][y].neighbors[3].context = (x + 1) * MAP_HEIGHT + y;
+            }
         }
     }
 }
@@ -33,6 +60,7 @@ void map_render(struct game_platformContext gamePlatformContext) {
             renderRect.w = NODE_SCALE;
             renderRect.h = NODE_SCALE;
 
+            SDL_SetRenderDrawColor(gamePlatformContext.renderer, 20, 20, 20, 255);
             SDL_RenderDrawRect(gamePlatformContext.renderer, &renderRect);
         }
     }
