@@ -4,7 +4,8 @@
 #include "entity_props.h"
 #include "vector2.h"
 
-#define NODE_SCALE (DEFAULT_ENTITY_SCALE * 1)
+#define NODE_SCALE (DEFAULT_ENTITY_SCALE)
+#define NODE_NEIGHBOR_CAPACITY 4
 
 // Usually, will be matched to the container array index.
 struct node_id {
@@ -14,7 +15,7 @@ struct node_id {
 struct node {
     struct node_id id;
     struct vector2 position;
-    struct node_id neighbors;
+    struct node_id neighbors[NODE_NEIGHBOR_CAPACITY];
 };
 
 #endif// !NODE_H
