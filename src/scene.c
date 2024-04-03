@@ -20,8 +20,8 @@ void scene_tick(struct game_platformContext gamePlatformContext) {
         // Update order.
         player_tick(frameEvent);
 
+        SDL_SetRenderDrawColor(gamePlatformContext.renderer, 46, 138, 1, 255);
         SDL_RenderClear(gamePlatformContext.renderer);
-        SDL_SetRenderDrawColor(gamePlatformContext.renderer, 0x00, 0x00, 0x00, 0xFF);
 
         // Render order.
         map_render(gamePlatformContext);

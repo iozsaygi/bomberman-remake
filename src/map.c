@@ -61,7 +61,7 @@ void map_render(struct game_platformContext gamePlatformContext) {
             renderRect.h = NODE_SCALE;
             renderRect.x = (int) current.position.x;
             renderRect.y = (int) current.position.y;
-            SDL_SetRenderDrawColor(gamePlatformContext.renderer, 20, 20, 20, 255);
+            SDL_SetRenderDrawColor(gamePlatformContext.renderer, 10, 10, 10, 255);
             SDL_RenderDrawRect(gamePlatformContext.renderer, &renderRect);
         }
     }
