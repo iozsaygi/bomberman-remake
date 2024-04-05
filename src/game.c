@@ -14,9 +14,10 @@ enum game_opResult game_initializeDependencies() {
     return SUCCESS;
 }
 
-enum game_opResult game_createPlatformContext(int width, int height, const char* title) {
+enum game_opResult game_createPlatformContext(int width, int height, const char* title, int targetFrameRate) {
     game_platformContext.width = width;
     game_platformContext.height = height;
+    game_platformContext.targetFrameRate = targetFrameRate;
 
     game_platformContext.window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, SDL_WINDOW_SHOWN);
     if (game_platformContext.window == NULL) {

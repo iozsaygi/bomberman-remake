@@ -11,6 +11,7 @@ enum game_opResult {
 struct game_platformContext {
     int width;
     int height;
+    int targetFrameRate;
     SDL_Window* window;
     SDL_Renderer* renderer;
 };
@@ -18,7 +19,7 @@ struct game_platformContext {
 extern struct game_platformContext game_platformContext;
 
 enum game_opResult game_initializeDependencies();
-enum game_opResult game_createPlatformContext(int width, int height, const char* title);
+enum game_opResult game_createPlatformContext(int width, int height, const char* title, int targetFrameRate);
 
 void game_clearPlatformContext();
 void game_terminateDependencies();
