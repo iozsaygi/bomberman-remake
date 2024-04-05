@@ -6,13 +6,17 @@
 
 // Game window is 320x240, each node has 16 pixel for height and width.
 // The map is going to fully allocate the entire game window.
-// Map size is -> (320 / 32) x (288 / 32) = (10) x (9) = 90
-#define MAP_WIDTH 10
+// Map size is -> (352 / 32) x (288 / 32) = (10) x (9) = 99
+#define MAP_WIDTH 11
 #define MAP_HEIGHT 9
+#define BLOCKED_NODE_COUNT 20
 
+extern int map_blockedNodeIDs[BLOCKED_NODE_COUNT];
 extern struct node map_nodes[MAP_WIDTH][MAP_HEIGHT];
 
 void map_initialize();
+
+int map_isNodeBlocked(struct node_id nodeID);
 
 void map_render(struct game_platformContext gamePlatformContext);
 

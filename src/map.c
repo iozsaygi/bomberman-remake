@@ -1,6 +1,29 @@
 #include "map.h"
 #include "debugger.h"
 
+int map_blockedNodeIDs[BLOCKED_NODE_COUNT] = {
+        10,
+        28,
+        46,
+        64,
+        82,
+        12,
+        30,
+        48,
+        66,
+        84,
+        14,
+        32,
+        50,
+        68,
+        86,
+        16,
+        34,
+        52,
+        70,
+        88,
+};
+
 struct node map_nodes[MAP_WIDTH][MAP_HEIGHT];
 
 void map_initialize() {
@@ -13,7 +36,11 @@ void map_initialize() {
             map_nodes[x][y].id.context = id;
 
             // Assign the node context.
-            map_nodes[x][y].nodeContext = AVAILABLE;
+            if (map_isNodeBlocked(map_nodes[x][y].id) == 1) {
+                map_nodes[x][y].nodeContext = BLOCKED;
+            } else {
+                map_nodes[x][y].nodeContext = AVAILABLE;
+            }
 
             // Calculate the position of the node.
             map_nodes[x][y].position.x = (float) (x * NODE_SCALE);
@@ -53,6 +80,17 @@ void map_initialize() {
     debugger_log(TRACE, "Initialized the game map with %d nodes", MAP_WIDTH * MAP_HEIGHT);
 }
 
+int map_isNodeBlocked(struct node_id nodeID) {
+    // Simple linear search to see if node with given ID is blocked or not.
+    for (int i = 0; i < BLOCKED_NODE_COUNT; i++) {
+        if (nodeID.context == map_blockedNodeIDs[i]) {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
 void map_render(struct game_platformContext gamePlatformContext) {
     // Render each node and its neighbors
     // TODO: Optimize or remove this later on. It is 300 renders calls at the moment.
@@ -64,8 +102,10 @@ void map_render(struct game_platformContext gamePlatformContext) {
             renderRect.h = NODE_SCALE;
             renderRect.x = (int) current.position.x;
             renderRect.y = (int) current.position.y;
-            SDL_SetRenderDrawColor(gamePlatformContext.renderer, 10, 10, 10, 255);
-            SDL_RenderDrawRect(gamePlatformContext.renderer, &renderRect);
+            if (current.nodeContext == BLOCKED) {
+                SDL_SetRenderDrawColor(gamePlatformContext.renderer, 200, 200, 200, 255);
+                SDL_RenderFillRect(gamePlatformContext.renderer, &renderRect);
+            }
         }
     }
 }
