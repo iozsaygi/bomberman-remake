@@ -6,7 +6,7 @@
 
 #define NODE_SCALE (DEFAULT_ENTITY_SCALE)
 #define NODE_NEIGHBOR_CAPACITY 4
-#define NODE_INVALID_NEIGHBOR_ID -1
+#define NODE_INVALID_NEIGHBOR_ID (-1)
 
 // Usually, will be matched to the container array index.
 struct node_id {
