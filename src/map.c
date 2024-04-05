@@ -12,6 +12,9 @@ void map_initialize() {
             // Assign the node ID.
             map_nodes[x][y].id.context = id;
 
+            // Assign the node context.
+            map_nodes[x][y].nodeContext = NONE;
+
             // Calculate the position of the node.
             map_nodes[x][y].position.x = (float) (x * NODE_SCALE);
             map_nodes[x][y].position.y = (float) (y * NODE_SCALE);

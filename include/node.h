@@ -13,10 +13,16 @@ struct node_id {
     int context;
 };
 
+enum node_context {
+    NONE,
+    BLOCKED
+};
+
 struct node {
     struct node_id id;
     struct vector2 position;
     struct node_id neighbors[NODE_NEIGHBOR_CAPACITY];
+    enum node_context nodeContext;
 };
 
 #endif// !NODE_H
