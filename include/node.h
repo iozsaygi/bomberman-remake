@@ -14,7 +14,7 @@ struct node_id {
 };
 
 enum node_context {
-    NONE,
+    AVAILABLE,
     BLOCKED
 };
 
