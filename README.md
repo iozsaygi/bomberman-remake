@@ -7,8 +7,9 @@ Please see [this](https://en.wikipedia.org/wiki/Bomberman_(1983_video_game)) pag
 
 ## Preview
 
-- Initial rendering of the map and player.
-  ![Initial rendering of the map and player](https://github.com/iozsaygi/bomberman-remake/blob/main/media/map-and-player-rendering.png)
+Initial rendering of the map and player.
+
+![Initial rendering of the map and player](https://github.com/iozsaygi/bomberman-remake/blob/main/media/map-and-player-rendering.png)
 
 ## License
 
