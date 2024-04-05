@@ -5,26 +5,26 @@ struct player_transform player_transform;
 struct player_movement player_movement;
 
 void player_initialize() {
-    player_transform.position.x = 120;
-    player_transform.position.y = 100;
+    player_transform.position.x = 0;
+    player_transform.position.y = 0;
     player_transform.scale.x = DEFAULT_ENTITY_SCALE;
     player_transform.scale.y = DEFAULT_ENTITY_SCALE;
-    player_movement.speed = 5.0f;
+    player_movement.speed = 125.0f;
 }
 
 void player_tick(enum eventDispatcher_eventType frameEvent, float deltaTime) {
     switch (frameEvent) {
         case KEY_DOWN_W:
-            player_transform.position.y -= player_movement.speed;
+            player_transform.position.y -= player_movement.speed * deltaTime;
             break;
         case KEY_DOWN_A:
-            player_transform.position.x -= player_movement.speed;
+            player_transform.position.x -= player_movement.speed * deltaTime;
             break;
         case KEY_DOWN_S:
-            player_transform.position.y += player_movement.speed;
+            player_transform.position.y += player_movement.speed * deltaTime;
             break;
         case KEY_DOWN_D:
-            player_transform.position.x += player_movement.speed;
+            player_transform.position.x += player_movement.speed * deltaTime;
             break;
         case NONE:
             break;
