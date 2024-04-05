@@ -9,7 +9,6 @@
 // Map size is -> (320 / 32) x (256 / 32) = (10) x (8) = 80
 #define MAP_WIDTH 10
 #define MAP_HEIGHT 8
-#define MAP_LENGTH 80
 
 extern struct node map_nodes[MAP_WIDTH][MAP_HEIGHT];
 
