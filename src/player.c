@@ -12,7 +12,7 @@ void player_initialize() {
     player_movement.speed = 5.0f;
 }
 
-void player_tick(enum eventDispatcher_eventType frameEvent) {
+void player_tick(enum eventDispatcher_eventType frameEvent, float deltaTime) {
     switch (frameEvent) {
         case KEY_DOWN_W:
             player_transform.position.y -= player_movement.speed;
@@ -31,6 +31,8 @@ void player_tick(enum eventDispatcher_eventType frameEvent) {
         case SHUTDOWN:
             break;
         case KEY_DOWN_SPACE:
+            break;
+        case KEY_DOWN_ESCAPE:
             break;
     }
 }
