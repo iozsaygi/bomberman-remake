@@ -19,6 +19,14 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
     switch (frameEvent) {
         case KEY_DOWN_W:
             desiredPosition.y -= player_movement.speed * deltaTime;
+            if (desiredPosition.y >= 0 && desiredPosition.y <= (float) gamePlatformContext.height) {
+                player_transform.position = desiredPosition;
+            } else {
+                // Calculate the gap.
+                float verticalGap = desiredPosition.y;
+                desiredPosition.y -= verticalGap;
+                player_transform.position = desiredPosition;
+            }
             break;
         case KEY_DOWN_A:
             desiredPosition.x -= player_movement.speed * deltaTime;
@@ -33,6 +41,14 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
             break;
         case KEY_DOWN_S:
             desiredPosition.y += player_movement.speed * deltaTime;
+            if (desiredPosition.y + DEFAULT_ENTITY_SCALE <= (float) gamePlatformContext.height) {
+                player_transform.position = desiredPosition;
+            } else {
+                // Calculate the gap.
+                float verticalGap = (float) (gamePlatformContext.height) - (desiredPosition.y + DEFAULT_ENTITY_SCALE);
+                desiredPosition.y += verticalGap;
+                player_transform.position = desiredPosition;
+            }
             break;
         case KEY_DOWN_D:
             desiredPosition.x += player_movement.speed * deltaTime;
