@@ -92,8 +92,6 @@ int map_isNodeBlocked(struct node_id nodeID) {
 }
 
 void map_render(struct game_platformContext gamePlatformContext) {
-    // Render each node and its neighbors
-    // TODO: Optimize or remove this later on. It is 300 renders calls at the moment.
     for (int x = 0; x < MAP_WIDTH; x++) {
         for (int y = 0; y < MAP_HEIGHT; y++) {
             struct node current = map_nodes[x][y];
