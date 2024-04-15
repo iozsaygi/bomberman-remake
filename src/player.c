@@ -1,4 +1,5 @@
 #include "player.h"
+#include "debugger.h"
 #include "entity_props.h"
 
 struct player_transform player_transform;
@@ -12,19 +13,37 @@ void player_initialize() {
     player_movement.speed = 125.0f;
 }
 
-void player_tick(enum eventDispatcher_eventType frameEvent, float deltaTime) {
+void player_tick(struct game_platformContext gamePlatformContext, enum eventDispatcher_eventType frameEvent, float deltaTime) {
+    struct vector2 desiredPosition = player_transform.position;
+
     switch (frameEvent) {
         case KEY_DOWN_W:
-            player_transform.position.y -= player_movement.speed * deltaTime;
+            desiredPosition.y -= player_movement.speed * deltaTime;
             break;
         case KEY_DOWN_A:
-            player_transform.position.x -= player_movement.speed * deltaTime;
+            desiredPosition.x -= player_movement.speed * deltaTime;
+            if (desiredPosition.x >= 0 && desiredPosition.x <= (float) gamePlatformContext.width) {
+                player_transform.position = desiredPosition;
+            } else {
+                // Calculate the gap.
+                float horizontalGap = desiredPosition.x;
+                desiredPosition.x -= horizontalGap;
+                player_transform.position = desiredPosition;
+            }
             break;
         case KEY_DOWN_S:
-            player_transform.position.y += player_movement.speed * deltaTime;
+            desiredPosition.y += player_movement.speed * deltaTime;
             break;
         case KEY_DOWN_D:
-            player_transform.position.x += player_movement.speed * deltaTime;
+            desiredPosition.x += player_movement.speed * deltaTime;
+            if (desiredPosition.x + DEFAULT_ENTITY_SCALE <= (float) gamePlatformContext.width) {
+                player_transform.position = desiredPosition;
+            } else {
+                // Calculate the gap.
+                float horizontalGap = (float) gamePlatformContext.width - (desiredPosition.x + DEFAULT_ENTITY_SCALE);
+                desiredPosition.x += horizontalGap;
+                player_transform.position = desiredPosition;
+            }
             break;
         case NONE:
             break;

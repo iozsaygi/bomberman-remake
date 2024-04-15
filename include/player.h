@@ -20,7 +20,7 @@ extern struct player_movement player_movement;
 // Will be called when the scene is getting initialized.
 void player_initialize();
 
-void player_tick(enum eventDispatcher_eventType frameEvent, float deltaTime);
+void player_tick(struct game_platformContext gamePlatformContext, enum eventDispatcher_eventType frameEvent, float deltaTime);
 
 // Will be called on each render pass.
 void player_render(struct game_platformContext gamePlatformContext);
