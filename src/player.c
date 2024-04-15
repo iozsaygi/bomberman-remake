@@ -8,8 +8,8 @@ struct player_movement player_movement;
 void player_initialize() {
     player_transform.position.x = 0;
     player_transform.position.y = 0;
-    player_transform.scale.x = DEFAULT_ENTITY_SCALE;
-    player_transform.scale.y = DEFAULT_ENTITY_SCALE;
+    player_transform.scale.x = PLAYER_SCALE;
+    player_transform.scale.y = PLAYER_SCALE;
     player_movement.speed = 125.0f;
 }
 
@@ -41,22 +41,22 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
             break;
         case KEY_DOWN_S:
             desiredPosition.y += player_movement.speed * deltaTime;
-            if (desiredPosition.y + DEFAULT_ENTITY_SCALE <= (float) gamePlatformContext.height) {
+            if (desiredPosition.y + PLAYER_SCALE <= (float) gamePlatformContext.height) {
                 player_transform.position = desiredPosition;
             } else {
                 // Calculate the gap.
-                float verticalGap = (float) (gamePlatformContext.height) - (desiredPosition.y + DEFAULT_ENTITY_SCALE);
+                float verticalGap = (float) (gamePlatformContext.height) - (desiredPosition.y + PLAYER_SCALE);
                 desiredPosition.y += verticalGap;
                 player_transform.position = desiredPosition;
             }
             break;
         case KEY_DOWN_D:
             desiredPosition.x += player_movement.speed * deltaTime;
-            if (desiredPosition.x + DEFAULT_ENTITY_SCALE <= (float) gamePlatformContext.width) {
+            if (desiredPosition.x + PLAYER_SCALE <= (float) gamePlatformContext.width) {
                 player_transform.position = desiredPosition;
             } else {
                 // Calculate the gap.
-                float horizontalGap = (float) gamePlatformContext.width - (desiredPosition.x + DEFAULT_ENTITY_SCALE);
+                float horizontalGap = (float) gamePlatformContext.width - (desiredPosition.x + PLAYER_SCALE);
                 desiredPosition.x += horizontalGap;
                 player_transform.position = desiredPosition;
             }
