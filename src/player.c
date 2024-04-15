@@ -75,10 +75,10 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
 void player_render(struct game_platformContext gamePlatformContext) {
     SDL_SetRenderDrawColor(gamePlatformContext.renderer, 0, 255, 0, 255);
     SDL_Rect renderRect;
-    renderRect.w = player_transform.scale.x;
-    renderRect.h = player_transform.scale.y;
-    renderRect.x = player_transform.position.x;
-    renderRect.y = player_transform.position.y;
+    renderRect.w = (int) player_transform.scale.x;
+    renderRect.h = (int) player_transform.scale.y;
+    renderRect.x = (int) player_transform.position.x;
+    renderRect.y = (int) player_transform.position.y;
 
     SDL_RenderFillRect(gamePlatformContext.renderer, &renderRect);
 
