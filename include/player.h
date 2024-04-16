@@ -14,11 +14,6 @@ struct player_movement {
     float speed;
 };
 
-enum player_transformOperationResult {
-    CAN_MOVE,
-    CAN_NOT_MOVE
-};
-
 extern struct player_transform player_transform;
 extern struct player_movement player_movement;
 
@@ -26,7 +21,6 @@ extern struct player_movement player_movement;
 void player_initialize();
 
 void player_tick(struct game_platformContext gamePlatformContext, enum eventDispatcher_eventType frameEvent, float deltaTime);
-enum player_transformOperationResult player_checkBlockedNodeIntersection(struct vector2 possiblePosition);
 
 // Will be called on each render pass.
 void player_render(struct game_platformContext gamePlatformContext);
