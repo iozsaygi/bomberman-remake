@@ -17,6 +17,7 @@ extern struct node map_nodes[MAP_WIDTH][MAP_HEIGHT];
 void map_initialize();
 
 int map_isNodeBlocked(struct node_id nodeID);
+struct node map_positionToNode(struct vector2 position);
 
 void map_render(struct game_platformContext gamePlatformContext);
 

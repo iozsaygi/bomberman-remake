@@ -91,6 +91,18 @@ int map_isNodeBlocked(struct node_id nodeID) {
     return 0;
 }
 
+struct node map_positionToNode(struct vector2 position) {
+    struct node result;
+    int horizontalIndex = (int) (position.x / NODE_SCALE);
+    int verticalIndex = (int) (position.y / NODE_SCALE);
+
+    if (horizontalIndex >= 0 && horizontalIndex < MAP_WIDTH && verticalIndex >= 0 && verticalIndex < MAP_HEIGHT) {
+        result = map_nodes[horizontalIndex][verticalIndex];
+    }
+
+    return result;
+}
+
 void map_render(struct game_platformContext gamePlatformContext) {
     for (int x = 0; x < MAP_WIDTH; x++) {
         for (int y = 0; y < MAP_HEIGHT; y++) {

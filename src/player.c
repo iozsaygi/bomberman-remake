@@ -1,6 +1,7 @@
 #include "player.h"
 #include "debugger.h"
 #include "entity_props.h"
+#include "map.h"
 
 struct player_transform player_transform;
 struct player_movement player_movement;
