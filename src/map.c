@@ -1,5 +1,7 @@
 #include "map.h"
 #include "debugger.h"
+#include <stdlib.h>
+#include <time.h>
 
 int map_blockedNodeIDs[BLOCKED_NODE_COUNT] = {
         10,
@@ -77,7 +79,19 @@ void map_initialize() {
         }
     }
 
+    map_setupRandomizedBlockedNodes(10);
+
     debugger_log(TRACE, "Initialized the game map with %d nodes", MAP_WIDTH * MAP_HEIGHT);
+}
+
+void map_setupRandomizedBlockedNodes(int count) {
+    srand(time(NULL));
+
+    for (int i = 0; i < count; i++) {
+        int randomRow = rand() % MAP_WIDTH;
+        int randomColumn = rand() % MAP_HEIGHT;
+        map_nodes[randomColumn][randomRow].nodeContext = BLOCKED;
+    }
 }
 
 int map_isNodeBlocked(struct node_id nodeID) {

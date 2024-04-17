@@ -16,6 +16,7 @@ extern struct node map_nodes[MAP_WIDTH][MAP_HEIGHT];
 
 void map_initialize();
 
+void map_setupRandomizedBlockedNodes(int count);
 int map_isNodeBlocked(struct node_id nodeID);
 struct node map_positionToNode(struct vector2 position);
 
