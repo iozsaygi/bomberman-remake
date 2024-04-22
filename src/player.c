@@ -20,11 +20,6 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
     switch (frameEvent) {
         case KEY_DOWN_W:
             desiredPosition.y -= player_movement.speed * deltaTime;
-
-            if (player_checkBlockedNodeIntersection(desiredPosition) == CAN_NOT_MOVE) {
-                return;
-            }
-
             if (desiredPosition.y >= 0 && desiredPosition.y <= (float) gamePlatformContext.height) {
                 player_transform.position = desiredPosition;
             } else {
@@ -36,11 +31,6 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
             break;
         case KEY_DOWN_A:
             desiredPosition.x -= player_movement.speed * deltaTime;
-
-            if (player_checkBlockedNodeIntersection(desiredPosition) == CAN_NOT_MOVE) {
-                return;
-            }
-
             if (desiredPosition.x >= 0 && desiredPosition.x <= (float) gamePlatformContext.width) {
                 player_transform.position = desiredPosition;
             } else {
@@ -52,11 +42,6 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
             break;
         case KEY_DOWN_S:
             desiredPosition.y += player_movement.speed * deltaTime;
-
-            if (player_checkBlockedNodeIntersection(desiredPosition) == CAN_NOT_MOVE) {
-                return;
-            }
-
             if (desiredPosition.y + PLAYER_SCALE <= (float) gamePlatformContext.height) {
                 player_transform.position = desiredPosition;
             } else {
@@ -68,11 +53,6 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
             break;
         case KEY_DOWN_D:
             desiredPosition.x += player_movement.speed * deltaTime;
-
-            if (player_checkBlockedNodeIntersection(desiredPosition) == CAN_NOT_MOVE) {
-                return;
-            }
-
             if (desiredPosition.x + PLAYER_SCALE <= (float) gamePlatformContext.width) {
                 player_transform.position = desiredPosition;
             } else {
@@ -90,16 +70,6 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
             break;
         case KEY_DOWN_ESCAPE:
             break;
-    }
-}
-
-enum player_transformOperationResult player_checkBlockedNodeIntersection(struct vector2 possiblePosition) {
-    struct node possibleNode = map_positionToNode(possiblePosition);
-
-    if (possibleNode.nodeContext == AVAILABLE) {
-        return CAN_MOVE;
-    } else {
-        return CAN_NOT_MOVE;
     }
 }
 
