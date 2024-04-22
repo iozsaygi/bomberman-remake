@@ -79,7 +79,7 @@ void map_initialize() {
         }
     }
 
-    map_setupRandomizedBlockedNodes(10);
+    // map_setupRandomizedBlockedNodes(10);
 
     debugger_log(TRACE, "Initialized the game map with %d nodes", MAP_WIDTH * MAP_HEIGHT);
 }
