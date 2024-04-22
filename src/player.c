@@ -29,18 +29,18 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
             desiredCollisionBox.x = (int) desiredPosition.x;
             desiredCollisionBox.y = (int) desiredPosition.y;
 
-            struct node node = map_positionToNode(desiredPosition);
-            struct physics_collisionBox nodeCollisionBox;
-            nodeCollisionBox.w = NODE_SCALE;
-            nodeCollisionBox.h = NODE_SCALE;
-            nodeCollisionBox.x = (int) node.position.x;
-            nodeCollisionBox.y = (int) node.position.y;
+            struct node upwardNode = map_positionToNode(desiredPosition);
+            struct physics_collisionBox upwardNodeCollisionBox;
+            upwardNodeCollisionBox.w = NODE_SCALE;
+            upwardNodeCollisionBox.h = NODE_SCALE;
+            upwardNodeCollisionBox.x = (int) upwardNode.position.x;
+            upwardNodeCollisionBox.y = (int) upwardNode.position.y;
 
-            if (node.nodeContext == BLOCKED && physics_boundingBoxCollisionQuery(&desiredCollisionBox, &nodeCollisionBox) == ACTIVE_COLLISION) {
+            if (upwardNode.nodeContext == BLOCKED && physics_boundingBoxCollisionQuery(&desiredCollisionBox, &upwardNodeCollisionBox) == ACTIVE_COLLISION) {
                 return;
             }
 
-            // If no collision with the node, proceed with movement
+            // If no collision with the upwardNode, proceed with movement
             if (desiredPosition.y >= 0 && desiredPosition.y <= (float)gamePlatformContext.height) {
                 player_transform.position = desiredPosition; // Set the player's position
             } else {
@@ -53,6 +53,21 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
             break;
         case KEY_DOWN_A:
             desiredPosition.x -= player_movement.speed * deltaTime;
+
+            desiredCollisionBox.x = (int) desiredPosition.x;
+            desiredCollisionBox.y = (int) desiredPosition.y;
+
+            struct node leftNode = map_positionToNode(desiredPosition);
+            struct physics_collisionBox leftNodeCollisionBox;
+            leftNodeCollisionBox.w = NODE_SCALE;
+            leftNodeCollisionBox.h = NODE_SCALE;
+            leftNodeCollisionBox.x = (int) leftNode.position.x;
+            leftNodeCollisionBox.y = (int) leftNode.position.y;
+
+            if (leftNode.nodeContext == BLOCKED && physics_boundingBoxCollisionQuery(&desiredCollisionBox, &leftNodeCollisionBox) == ACTIVE_COLLISION) {
+                return;
+            }
+
             if (desiredPosition.x >= 0 && desiredPosition.x <= (float) gamePlatformContext.width) {
                 player_transform.position = desiredPosition;
             } else {
@@ -64,6 +79,21 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
             break;
         case KEY_DOWN_S:
             desiredPosition.y += player_movement.speed * deltaTime;
+
+            desiredCollisionBox.x = (int) desiredPosition.x;
+            desiredCollisionBox.y = (int) desiredPosition.y;
+
+            struct node downNode = map_positionToNode(desiredPosition);
+            struct physics_collisionBox downNodeCollisionBox;
+            downNodeCollisionBox.w = NODE_SCALE;
+            downNodeCollisionBox.h = NODE_SCALE;
+            downNodeCollisionBox.x = (int) downNode.position.x;
+            downNodeCollisionBox.y = (int) downNode.position.y;
+
+            if (downNode.nodeContext == BLOCKED && physics_boundingBoxCollisionQuery(&desiredCollisionBox, &downNodeCollisionBox) == ACTIVE_COLLISION) {
+                return;
+            }
+
             if (desiredPosition.y + PLAYER_SCALE <= (float) gamePlatformContext.height) {
                 player_transform.position = desiredPosition;
             } else {
@@ -75,6 +105,21 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
             break;
         case KEY_DOWN_D:
             desiredPosition.x += player_movement.speed * deltaTime;
+
+            desiredCollisionBox.x = (int) desiredPosition.x;
+            desiredCollisionBox.y = (int) desiredPosition.y;
+
+            struct node rightNode = map_positionToNode(desiredPosition);
+            struct physics_collisionBox rightNodeCollisionBox;
+            rightNodeCollisionBox.w = NODE_SCALE;
+            rightNodeCollisionBox.h = NODE_SCALE;
+            rightNodeCollisionBox.x = (int) rightNode.position.x;
+            rightNodeCollisionBox.y = (int) rightNode.position.y;
+
+            if (rightNode.nodeContext == BLOCKED && physics_boundingBoxCollisionQuery(&desiredCollisionBox, &rightNodeCollisionBox) == ACTIVE_COLLISION) {
+                return;
+            }
+
             if (desiredPosition.x + PLAYER_SCALE <= (float) gamePlatformContext.width) {
                 player_transform.position = desiredPosition;
             } else {
