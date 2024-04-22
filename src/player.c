@@ -41,8 +41,8 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
             }
 
             // If no collision with the upwardNode, proceed with movement
-            if (desiredPosition.y >= 0 && desiredPosition.y <= (float)gamePlatformContext.height) {
-                player_transform.position = desiredPosition; // Set the player's position
+            if (desiredPosition.y >= 0 && desiredPosition.y <= (float) gamePlatformContext.height) {
+                player_transform.position = desiredPosition;// Set the player's position
             } else {
                 // Adjust the player's position if it goes beyond the game window
                 float verticalGap = desiredPosition.y;
