@@ -2,6 +2,7 @@
 #include "debugger.h"
 #include "entity_props.h"
 #include "map.h"
+#include "physics.h"
 
 struct player_transform player_transform;
 struct player_movement player_movement;
@@ -17,17 +18,38 @@ void player_initialize() {
 void player_tick(struct game_platformContext gamePlatformContext, enum eventDispatcher_eventType frameEvent, float deltaTime) {
     struct vector2 desiredPosition = player_transform.position;
 
+    struct physics_collisionBox desiredCollisionBox;
+    desiredCollisionBox.w = PLAYER_SCALE;
+    desiredCollisionBox.h = PLAYER_SCALE;
+
     switch (frameEvent) {
         case KEY_DOWN_W:
             desiredPosition.y -= player_movement.speed * deltaTime;
-            if (desiredPosition.y >= 0 && desiredPosition.y <= (float) gamePlatformContext.height) {
-                player_transform.position = desiredPosition;
+
+            desiredCollisionBox.x = (int) desiredPosition.x;
+            desiredCollisionBox.y = (int) desiredPosition.y;
+
+            struct node node = map_positionToNode(desiredPosition);
+            struct physics_collisionBox nodeCollisionBox;
+            nodeCollisionBox.w = NODE_SCALE;
+            nodeCollisionBox.h = NODE_SCALE;
+            nodeCollisionBox.x = (int) node.position.x;
+            nodeCollisionBox.y = (int) node.position.y;
+
+            if (node.nodeContext == BLOCKED && physics_boundingBoxCollisionQuery(&desiredCollisionBox, &nodeCollisionBox) == ACTIVE_COLLISION) {
+                return;
+            }
+
+            // If no collision with the node, proceed with movement
+            if (desiredPosition.y >= 0 && desiredPosition.y <= (float)gamePlatformContext.height) {
+                player_transform.position = desiredPosition; // Set the player's position
             } else {
-                // Calculate the gap.
+                // Adjust the player's position if it goes beyond the game window
                 float verticalGap = desiredPosition.y;
                 desiredPosition.y -= verticalGap;
                 player_transform.position = desiredPosition;
             }
+
             break;
         case KEY_DOWN_A:
             desiredPosition.x -= player_movement.speed * deltaTime;
