@@ -56,3 +56,4 @@ dkms.conf
 /cmake-build-debug
 /cmake-build-debug-visual-studio
 /dependencies
+/.DS_Store
