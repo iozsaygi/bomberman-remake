@@ -12,9 +12,12 @@ if (MSVC)
     add_compile_definitions(/Wall /WX)
 endif ()
 
-# Set the download URL for SDL library. Using specific version for MSVC.
-# Will need to target different version for other compilers and platforms.
-set(SDL2_DOWNLOAD_URL "https://github.com/libsdl-org/SDL/releases/download/release-2.30.1/SDL2-devel-2.30.1-VC.zip")
+# Set the download URL for SDL library.
+if (APPLE)
+    set(SDL2_DOWNLOAD_URL "https://github.com/libsdl-org/SDL/releases/download/release-2.30.2/SDL2-2.30.2.dmg")
+else ()
+    set(SDL2_DOWNLOAD_URL "https://github.com/libsdl-org/SDL/releases/download/release-2.30.1/SDL2-devel-2.30.1-VC.zip")
+endif ()
 
 # Set the extract directory for downloaded SDL library.
 set(SDL2_EXTRACTION_DIRECTORY "${CMAKE_SOURCE_DIR}/dependencies/SDL2")
