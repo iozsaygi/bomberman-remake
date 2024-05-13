@@ -2,6 +2,7 @@
 #include "event_dispatcher.h"
 #include "map.h"
 #include "player.h"
+#include <stdlib.h>
 
 struct bomb_transform* scene_lastPlantedBomb;
 
@@ -12,6 +13,12 @@ void scene_initialize() {
 }
 
 void scene_requestBombAt(struct vector2 position) {
+    // Clear the last planted bomb.
+    if (scene_lastPlantedBomb != NULL) {
+        free(scene_lastPlantedBomb);
+        scene_lastPlantedBomb = NULL;
+    }
+
     scene_lastPlantedBomb = bomb_createAt(position);
 }
 
