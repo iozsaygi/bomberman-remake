@@ -1,4 +1,5 @@
 #include "bomb.h"
+#include "debugger.h"
 #include "entity_props.h"
 #include <assert.h>
 #include <stdlib.h>
@@ -10,16 +11,23 @@ struct bomb_transform* bomb_createAt(struct vector2 position) {
     bombTransform->position = position;
     bombTransform->scale.x = DEFAULT_ENTITY_SCALE / 2;
     bombTransform->scale.y = DEFAULT_ENTITY_SCALE / 2;
+    bombTransform->timer = 0.0f;
 
     return bombTransform;
 }
 
-void bomb_tick(float deltaTime) {
+void bomb_tick(float deltaTime, struct bomb_transform* bombTransform) {
+    bombTransform->timer += deltaTime;
+    if (bombTransform->timer >= BOMB_LIFETIME_IN_SECONDS) {
+        free(bombTransform);
+        bombTransform = NULL;
+    }
 }
 
 void bomb_explode(struct bomb_transform* bombTransform) {
     assert(bombTransform != NULL);
     // TODO: Apply damage to adjacent nodes.
+    debugger_log(TRACE, "Implement bomb explosion here");
     free(bombTransform);
 }
 

@@ -1,9 +1,9 @@
 #include "scene.h"
+#include "debugger.h"
 #include "event_dispatcher.h"
 #include "map.h"
 #include "player.h"
 #include <stdlib.h>
-#include "debugger.h"
 
 struct bomb_transform* scene_lastPlantedBomb;
 
@@ -44,6 +44,9 @@ void scene_tick(struct game_platformContext gamePlatformContext) {
 
         // Update order with delta time
         player_tick(gamePlatformContext, frameEvent, deltaTime);
+        if (scene_lastPlantedBomb != NULL) {
+            bomb_tick(deltaTime, scene_lastPlantedBomb->position);
+        }
 
         SDL_SetRenderDrawColor(gamePlatformContext.renderer, 46, 138, 1, 255);
         SDL_RenderClear(gamePlatformContext.renderer);
