@@ -134,6 +134,7 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
         case SHUTDOWN:
             break;
         case KEY_DOWN_SPACE:
+            debugger_log(TRACE, "This is test log for space key");
             break;
         case KEY_DOWN_ESCAPE:
             break;
