@@ -3,9 +3,16 @@
 #include "map.h"
 #include "player.h"
 
+struct bomb_transform* scene_lastPlantedBomb;
+
 void scene_initialize() {
     player_initialize();
     map_initialize();
+    scene_lastPlantedBomb = NULL;
+}
+
+void scene_requestBombAt(struct vector2 position) {
+    scene_lastPlantedBomb = bomb_createAt(position);
 }
 
 void scene_tick(struct game_platformContext gamePlatformContext) {
@@ -35,6 +42,9 @@ void scene_tick(struct game_platformContext gamePlatformContext) {
         // Render order.
         map_render(gamePlatformContext);
         player_render(gamePlatformContext);
+        if (scene_lastPlantedBomb != NULL) {
+            bomb_render(gamePlatformContext, scene_lastPlantedBomb);
+        }
 
         SDL_RenderPresent(gamePlatformContext.renderer);
 

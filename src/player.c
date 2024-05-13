@@ -3,6 +3,7 @@
 #include "entity_props.h"
 #include "map.h"
 #include "physics.h"
+#include "scene.h"
 
 struct player_transform player_transform;
 struct player_movement player_movement;
@@ -137,6 +138,8 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
             break;
         case KEY_DOWN_SPACE:
             if (player_isSpaceKeyRegisteredForCurrentFrame == 0) {
+                struct node targetNode = map_positionToNode(player_transform.position);
+                scene_requestBombAt(targetNode.position);
                 player_isSpaceKeyRegisteredForCurrentFrame = 1;
             }
             break;

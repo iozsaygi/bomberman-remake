@@ -13,6 +13,6 @@ struct bomb_transform {
 struct bomb_transform* bomb_createAt(struct vector2 position);
 void bomb_tick(float deltaTime);
 void bomb_explode(struct bomb_transform* bombTransform);
-void bomb_render(struct game_platformContext gamePlatformContext);
+void bomb_render(struct game_platformContext gamePlatformContext, struct bomb_transform* bombTransform);
 
 #endif// !BOMB_H

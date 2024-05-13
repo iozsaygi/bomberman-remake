@@ -20,5 +20,5 @@ void bomb_explode(struct bomb_transform* bombTransform) {
     free(bombTransform);
 }
 
-void bomb_render(struct game_platformContext gamePlatformContext) {
+void bomb_render(struct game_platformContext gamePlatformContext, struct bomb_transform* bombTransform) {
 }
