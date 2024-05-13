@@ -16,6 +16,7 @@ void scene_initialize() {
 void scene_requestBombAt(struct vector2 position) {
     // Clear the last planted bomb.
     if (scene_lastPlantedBomb != NULL) {
+        bomb_explode(scene_lastPlantedBomb);
         free(scene_lastPlantedBomb);
         scene_lastPlantedBomb = NULL;
     }

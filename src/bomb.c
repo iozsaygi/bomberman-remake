@@ -27,6 +27,7 @@ void bomb_tick(float deltaTime, struct bomb_transform* bombTransform) {
         // This will only work for gameplay with single bomb placement rule.
         bombTransform->scale.x = 0.0f;
         bombTransform->scale.y = 0.0f;
+        bomb_explode(bombTransform);
     }
 }
 
