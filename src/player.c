@@ -7,6 +7,8 @@
 struct player_transform player_transform;
 struct player_movement player_movement;
 
+unsigned char player_isSpaceKeyRegisteredForCurrentFrame;
+
 void player_initialize() {
     player_transform.position.x = 0;
     player_transform.position.y = 0;
@@ -134,7 +136,10 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
         case SHUTDOWN:
             break;
         case KEY_DOWN_SPACE:
-            debugger_log(TRACE, "This is test log for space key");
+            if (player_isSpaceKeyRegisteredForCurrentFrame == 0) {
+                debugger_log(TRACE, "This is test log for space key");
+                player_isSpaceKeyRegisteredForCurrentFrame = 1;
+            }
             break;
         case KEY_DOWN_ESCAPE:
             break;

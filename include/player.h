@@ -17,6 +17,9 @@ struct player_movement {
 extern struct player_transform player_transform;
 extern struct player_movement player_movement;
 
+// Input related state tracking.
+extern unsigned char player_isSpaceKeyRegisteredForCurrentFrame;
+
 // Will be called when the scene is getting initialized.
 void player_initialize();
 
