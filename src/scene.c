@@ -45,7 +45,7 @@ void scene_tick(struct game_platformContext gamePlatformContext) {
         // Update order with delta time
         player_tick(gamePlatformContext, frameEvent, deltaTime);
         if (scene_lastPlantedBomb != NULL) {
-            bomb_tick(deltaTime, scene_lastPlantedBomb->position);
+            bomb_tick(deltaTime, scene_lastPlantedBomb);
         }
 
         SDL_SetRenderDrawColor(gamePlatformContext.renderer, 46, 138, 1, 255);
