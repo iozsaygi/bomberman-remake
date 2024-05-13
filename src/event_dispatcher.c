@@ -21,6 +21,10 @@ enum eventDispatcher_eventType eventDispatcher_handleEvents() {
                 } else if (event.key.keysym.sym == SDLK_ESCAPE) {
                     return KEY_DOWN_ESCAPE;
                 }
+            case SDL_KEYUP:
+                if (event.key.keysym.sym == SDLK_SPACE) {
+                    return KEY_UP_SPACE;
+                }
         }
     }
 

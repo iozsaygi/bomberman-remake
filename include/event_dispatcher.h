@@ -12,7 +12,9 @@ enum eventDispatcher_eventType {
     KEY_DOWN_S,
     KEY_DOWN_D,
     KEY_DOWN_SPACE,
-    KEY_DOWN_ESCAPE
+    KEY_DOWN_ESCAPE,
+
+    KEY_UP_SPACE
 };
 
 enum eventDispatcher_eventType eventDispatcher_handleEvents();

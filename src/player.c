@@ -143,6 +143,11 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
             break;
         case KEY_DOWN_ESCAPE:
             break;
+        case KEY_UP_SPACE:
+            if (player_isSpaceKeyRegisteredForCurrentFrame == 1) {
+                player_isSpaceKeyRegisteredForCurrentFrame = 0;
+            }
+            break;
     }
 }
 
