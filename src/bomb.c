@@ -17,6 +17,10 @@ struct bomb_transform* bomb_createAt(struct vector2 position) {
 }
 
 void bomb_tick(float deltaTime, struct bomb_transform* bombTransform) {
+    if (bombTransform == NULL) {
+        return;
+    }
+    
     bombTransform->timer += deltaTime;
     if (bombTransform->timer >= BOMB_LIFETIME_IN_SECONDS) {
         free(bombTransform);
