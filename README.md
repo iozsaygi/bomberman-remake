@@ -9,6 +9,13 @@ Please see [this](https://en.wikipedia.org/wiki/Bomberman_(1983_video_game)) pag
 
 Initial rendering of the map and player.
 
+## Building
+
+### Windows
+
+1. Ensure that you already installed [Microsoft Visual Studio](https://visualstudio.microsoft.com/downloads/) with
+   the ``Desktop Development with C++`` workload selected.
+
 ![Initial rendering of the map and player](https://github.com/iozsaygi/bomberman-remake/blob/main/media/map-and-player-rendering.png)
 
 ## License
