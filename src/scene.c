@@ -3,6 +3,7 @@
 #include "map.h"
 #include "player.h"
 #include <stdlib.h>
+#include "debugger.h"
 
 struct bomb_transform* scene_lastPlantedBomb;
 
@@ -20,6 +21,7 @@ void scene_requestBombAt(struct vector2 position) {
     }
 
     scene_lastPlantedBomb = bomb_createAt(position);
+    debugger_log(TRACE, "Placed a new bomb at (%d, %d)", position.x, position.y);
 }
 
 void scene_tick(struct game_platformContext gamePlatformContext) {
