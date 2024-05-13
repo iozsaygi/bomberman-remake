@@ -20,11 +20,13 @@ void bomb_tick(float deltaTime, struct bomb_transform* bombTransform) {
     if (bombTransform == NULL) {
         return;
     }
-    
+
     bombTransform->timer += deltaTime;
     if (bombTransform->timer >= BOMB_LIFETIME_IN_SECONDS) {
-        free(bombTransform);
-        bombTransform = NULL;
+        // Instead of freeing the existing bomb make it smaller, so it won't be visible until next bomb placement.
+        // This will only work for gameplay with single bomb placement rule.
+        bombTransform->scale.x = 0.0f;
+        bombTransform->scale.y = 0.0f;
     }
 }
 
