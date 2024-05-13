@@ -17,7 +17,7 @@ Initial rendering of the map and player.
 
 1. Download and install [CMake](https://cmake.org/download/)
 2. Ensure that you already installed [Microsoft Visual Studio](https://visualstudio.microsoft.com/downloads/) with
-   the ``Desktop Development with C++`` workload selected
+   the ``Desktop development with C++`` workload selected
 3. ``cd`` to the repository directory by using ``Visual Studio Developer Command Prompt``
 4. ``mkdir build``
 5. ``cd build``

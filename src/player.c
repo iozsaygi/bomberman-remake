@@ -137,7 +137,6 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
             break;
         case KEY_DOWN_SPACE:
             if (player_isSpaceKeyRegisteredForCurrentFrame == 0) {
-                debugger_log(TRACE, "This is test log for space key");
                 player_isSpaceKeyRegisteredForCurrentFrame = 1;
             }
             break;
