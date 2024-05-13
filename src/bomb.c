@@ -23,19 +23,16 @@ void bomb_tick(float deltaTime, struct bomb_transform* bombTransform) {
 
     bombTransform->timer += deltaTime;
     if (bombTransform->timer >= BOMB_LIFETIME_IN_SECONDS) {
-        // Instead of freeing the existing bomb make it smaller, so it won't be visible until next bomb placement.
-        // This will only work for gameplay with single bomb placement rule.
-        bombTransform->scale.x = 0.0f;
-        bombTransform->scale.y = 0.0f;
         bomb_explode(bombTransform);
     }
 }
 
 void bomb_explode(struct bomb_transform* bombTransform) {
     assert(bombTransform != NULL);
+    bombTransform->scale.x = 0.0f;
+    bombTransform->scale.y = 0.0f;
     // TODO: Apply damage to adjacent nodes.
     debugger_log(TRACE, "Implement bomb explosion here");
-    free(bombTransform);
 }
 
 void bomb_render(struct game_platformContext gamePlatformContext, struct bomb_transform* bombTransform) {
