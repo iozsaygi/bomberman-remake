@@ -12,6 +12,7 @@ struct bomb_transform* bomb_createAt(struct vector2 position) {
     bombTransform->scale.x = DEFAULT_ENTITY_SCALE / 2;
     bombTransform->scale.y = DEFAULT_ENTITY_SCALE / 2;
     bombTransform->timer = 0.0f;
+    bombTransform->isExploded = 0;
 
     return bombTransform;
 }
@@ -29,10 +30,17 @@ void bomb_tick(float deltaTime, struct bomb_transform* bombTransform) {
 
 void bomb_explode(struct bomb_transform* bombTransform) {
     assert(bombTransform != NULL);
+    if (bombTransform->isExploded == 1) {
+        return;
+    }
+
     bombTransform->scale.x = 0.0f;
     bombTransform->scale.y = 0.0f;
+
     // TODO: Apply damage to adjacent nodes.
+
     debugger_log(TRACE, "Implement bomb explosion here");
+    bombTransform->isExploded = 1;
 }
 
 void bomb_render(struct game_platformContext gamePlatformContext, struct bomb_transform* bombTransform) {

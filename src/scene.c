@@ -22,6 +22,7 @@ void scene_requestBombAt(struct vector2 position) {
         scene_lastPlantedBomb = bomb_createAt(position);
     }
 
+    scene_lastPlantedBomb->isExploded = 0;
     debugger_log(TRACE, "Placed a new bomb at (%f, %f)", position.x, position.y);
 }
 
