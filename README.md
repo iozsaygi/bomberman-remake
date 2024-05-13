@@ -17,6 +17,11 @@ Initial rendering of the map and player.
 
 1. Ensure that you already installed [Microsoft Visual Studio](https://visualstudio.microsoft.com/downloads/) with
    the ``Desktop Development with C++`` workload selected.
+2. ``cd`` to the repository directory by using ``Visual Studio Developer Command Prompt``
+3. ``mkdir build``
+4. ``cd build``
+5. ``cmake -G "Visual Studio 17 2022 -A x64 ..``
+6. ``msbuild /m /p:Configuration=Debug /p:Platform=x64 bomberman_remake.sln``
 
 ## License
 
