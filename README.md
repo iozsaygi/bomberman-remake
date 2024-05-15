@@ -21,7 +21,7 @@ Initial rendering of the map and player.
 3. ``cd`` to the repository directory by using ``Visual Studio Developer Command Prompt``
 4. ``mkdir build``
 5. ``cd build``
-6. ``cmake -G "Visual Studio 17 2022 -A x64 ..``
+6. ``cmake -G "Visual Studio 17 2022" -A x64 ..``
 7. ``msbuild /m /p:Configuration=Debug /p:Platform=x64 bomberman_remake.sln``
 
 ## License
