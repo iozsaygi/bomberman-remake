@@ -3,7 +3,6 @@
 #include "event_dispatcher.h"
 #include "map.h"
 #include "player.h"
-#include <stdlib.h>
 
 struct bomb_transform* scene_lastPlantedBomb;
 
