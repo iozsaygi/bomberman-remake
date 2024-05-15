@@ -12,6 +12,7 @@ struct bomb_transform* bomb_createAt(struct vector2 position) {
     bombTransform->scale.x = DEFAULT_ENTITY_SCALE / 2;
     bombTransform->scale.y = DEFAULT_ENTITY_SCALE / 2;
     bombTransform->timer = 0.0f;
+    bombTransform->isExploded = 0;
 
     return bombTransform;
 }
@@ -30,8 +31,14 @@ void bomb_plantAt(struct vector2 position, struct bomb_transform* bombTransform)
 }
 
 void bomb_explode(struct bomb_transform* bombTransform) {
+    // Do not explode if it is already exploded.
+    if (bombTransform->isExploded == 1) {
+        return;
+    }
+
     bombTransform->scale.x = 0.0f;
     bombTransform->scale.y = 0.0f;
+    bombTransform->isExploded = 1;
 
     // TODO: Apply damage to adjacent nodes.
 
