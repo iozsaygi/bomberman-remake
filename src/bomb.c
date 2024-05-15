@@ -18,6 +18,10 @@ struct bomb_transform* bomb_createAt(struct vector2 position) {
 }
 
 void bomb_tick(float deltaTime, struct bomb_transform* bombTransform) {
+    if (bombTransform->isExploded == 1) {
+        return;
+    }
+
     bombTransform->timer += deltaTime;
     if (bombTransform->timer >= BOMB_LIFETIME_IN_SECONDS) {
         bomb_explode(bombTransform);
@@ -29,6 +33,7 @@ void bomb_plantAt(struct vector2 position, struct bomb_transform* bombTransform)
     bombTransform->scale.y = DEFAULT_ENTITY_SCALE / 2;
     bombTransform->position = position;
     bombTransform->isExploded = 0;
+    bombTransform->timer = 0.0f;
 }
 
 void bomb_explode(struct bomb_transform* bombTransform) {
