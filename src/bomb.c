@@ -12,7 +12,7 @@ struct bomb_transform* bomb_createAt(struct vector2 position) {
     bombTransform->scale.x = DEFAULT_ENTITY_SCALE / 2;
     bombTransform->scale.y = DEFAULT_ENTITY_SCALE / 2;
     bombTransform->timer = 0.0f;
-    bombTransform->isExploded = 0;
+    bombTransform->isExploded = 1;
 
     return bombTransform;
 }
@@ -28,6 +28,7 @@ void bomb_plantAt(struct vector2 position, struct bomb_transform* bombTransform)
     bombTransform->scale.x = DEFAULT_ENTITY_SCALE / 2;
     bombTransform->scale.y = DEFAULT_ENTITY_SCALE / 2;
     bombTransform->position = position;
+    bombTransform->isExploded = 0;
 }
 
 void bomb_explode(struct bomb_transform* bombTransform) {
