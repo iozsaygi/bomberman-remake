@@ -10,7 +10,6 @@ struct bomb_transform {
     struct vector2 position;
     struct vector2 scale;
     float timer;
-    unsigned char isExploded;
 };
 
 struct bomb_transform* bomb_createAt(struct vector2 position);

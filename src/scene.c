@@ -10,18 +10,20 @@ void scene_initialize() {
     player_initialize();
     map_initialize();
     scene_lastPlantedBomb = NULL;
+
+    // Allocate the bomb. (It will be invisible)
+    struct vector2 bombAllocationPosition;
+    bombAllocationPosition.x = -100;
+    bombAllocationPosition.y = -100;
+    scene_lastPlantedBomb = bomb_createAt(bombAllocationPosition);
 }
 
 void scene_requestBombAt(struct vector2 position) {
     // Clear the last planted bomb.
     if (scene_lastPlantedBomb != NULL) {
         bomb_explode(scene_lastPlantedBomb);
-        scene_lastPlantedBomb->position = position;
-    } else {
-        scene_lastPlantedBomb = bomb_createAt(position);
     }
 
-    scene_lastPlantedBomb->isExploded = 0;
     debugger_log(TRACE, "Placed a new bomb at (%d, %d)", position.x, position.y);
 }
 
