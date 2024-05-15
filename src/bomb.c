@@ -23,6 +23,12 @@ void bomb_tick(float deltaTime, struct bomb_transform* bombTransform) {
     }
 }
 
+void bomb_plantAt(struct vector2 position, struct bomb_transform* bombTransform) {
+    bombTransform->scale.x = DEFAULT_ENTITY_SCALE / 2;
+    bombTransform->scale.y = DEFAULT_ENTITY_SCALE / 2;
+    bombTransform->position = position;
+}
+
 void bomb_explode(struct bomb_transform* bombTransform) {
     bombTransform->scale.x = 0.0f;
     bombTransform->scale.y = 0.0f;

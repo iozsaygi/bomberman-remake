@@ -19,11 +19,9 @@ void scene_initialize() {
 }
 
 void scene_requestBombAt(struct vector2 position) {
-    // Clear the last planted bomb.
-    if (scene_lastPlantedBomb != NULL) {
-        bomb_explode(scene_lastPlantedBomb);
-    }
-
+    // Explode the last planted bomb first.
+    bomb_explode(scene_lastPlantedBomb);
+    bomb_plantAt(position, scene_lastPlantedBomb);
     debugger_log(TRACE, "Placed a new bomb at (%d, %d)", position.x, position.y);
 }
 
