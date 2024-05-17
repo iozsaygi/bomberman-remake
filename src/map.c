@@ -117,7 +117,7 @@ struct node map_positionToNode(struct vector2 position) {
     return result;
 }
 
-void map_render(struct game_platformContext gamePlatformContext) {
+void map_render(struct game_platformContext gamePlatformContext, struct assetManager_textures textures) {
     for (int x = 0; x < MAP_WIDTH; x++) {
         for (int y = 0; y < MAP_HEIGHT; y++) {
             struct node current = map_nodes[x][y];
@@ -127,8 +127,12 @@ void map_render(struct game_platformContext gamePlatformContext) {
             renderRect.x = (int) current.position.x;
             renderRect.y = (int) current.position.y;
             if (current.nodeContext == BLOCKED) {
-                SDL_SetRenderDrawColor(gamePlatformContext.renderer, 200, 200, 200, 255);
-                SDL_RenderFillRect(gamePlatformContext.renderer, &renderRect);
+                SDL_Rect textureRenderRect;
+                textureRenderRect.x = 48;
+                textureRenderRect.y = 47;
+                textureRenderRect.w = 16;
+                textureRenderRect.h = 17;
+                SDL_RenderCopy(gamePlatformContext.renderer, textures.textureAtlas, &textureRenderRect, &renderRect);
             }
         }
     }

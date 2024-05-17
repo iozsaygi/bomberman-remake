@@ -3,6 +3,7 @@
 
 #include "game.h"
 #include "node.h"
+#include "asset_manager.h"
 
 // Game window is 320x240, each node has 16 pixel for height and width.
 // The map is going to fully allocate the entire game window.
@@ -20,6 +21,6 @@ void map_setupRandomizedBlockedNodes(int count);
 int map_isNodeBlocked(struct node_id nodeID);
 struct node map_positionToNode(struct vector2 position);
 
-void map_render(struct game_platformContext gamePlatformContext);
+void map_render(struct game_platformContext gamePlatformContext, struct assetManager_textures textures);
 
 #endif// !MAP_H

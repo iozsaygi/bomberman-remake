@@ -53,7 +53,7 @@ void scene_tick(struct game_platformContext gamePlatformContext) {
         SDL_RenderClear(gamePlatformContext.renderer);
 
         // Render order.
-        map_render(gamePlatformContext);
+        map_render(gamePlatformContext, assetManager_textures);
         player_render(gamePlatformContext, assetManager_textures);
         if (scene_lastPlantedBomb != NULL) {
             bomb_render(gamePlatformContext, scene_lastPlantedBomb, assetManager_textures);
