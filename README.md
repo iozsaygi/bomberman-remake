@@ -11,7 +11,7 @@ Initial rendering of the map and player.
 
 ![Initial rendering of the map and player](https://github.com/iozsaygi/bomberman-remake/blob/main/media/map-and-player-rendering.png)
 
-Added textures for player, map, and bomb.
+Added textures for player, map, and bomb. (No animations are available yet.)
 
 ![Added textures for player, map, and bomb](https://github.com/iozsaygi/bomberman-remake/blob/main/media/map-and-player-textures.png?raw=true)
 
