@@ -55,8 +55,8 @@ void bomb_render(struct game_platformContext gamePlatformContext, struct bomb_tr
     SDL_SetRenderDrawColor(gamePlatformContext.renderer, 255, 0, 0, 255);
 
     SDL_Rect renderTransformRect;
-    renderTransformRect.w = (int) bombTransform->scale.x;
-    renderTransformRect.h = (int) bombTransform->scale.y;
+    renderTransformRect.w = (int) bombTransform->scale.x * 2;
+    renderTransformRect.h = (int) bombTransform->scale.y * 2;
     renderTransformRect.x = (int) bombTransform->position.x;
     renderTransformRect.y = (int) bombTransform->position.y;
 
