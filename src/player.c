@@ -156,13 +156,13 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
 void player_render(struct game_platformContext gamePlatformContext, struct assetManager_textures textures) {
     SDL_SetRenderDrawColor(gamePlatformContext.renderer, 0, 255, 0, 255);
     SDL_Rect renderTransformRect;
-    renderTransformRect.w = (int) player_transform.scale.x * 2;
-    renderTransformRect.h = (int) player_transform.scale.y * 2;
+    renderTransformRect.w = (int) player_transform.scale.x;
+    renderTransformRect.h = (int) player_transform.scale.y2;
     renderTransformRect.x = (int) player_transform.position.x;
     renderTransformRect.y = (int) player_transform.position.y;
 
     SDL_Rect texture_rect;
-    texture_rect.x = 70; //the x coordinate
+    texture_rect.x = 60; //the x coordinate
     texture_rect.y = 0; //the y coordinate
     texture_rect.w = 15; //the width of the texture
     texture_rect.h = 15; //the height of the texture
