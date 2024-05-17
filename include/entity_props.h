@@ -2,7 +2,7 @@
 #define ENTITY_PROPS_H
 
 #define DEFAULT_ENTITY_SCALE 32
-#define BOMB_SCALE 42
+#define BOMB_SCALE 54
 #define PLAYER_SCALE 24
 
 #endif// !ENTITY_PROPS_H
