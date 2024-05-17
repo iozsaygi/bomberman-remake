@@ -1,9 +1,9 @@
 #ifndef MAP_H
 #define MAP_H
 
+#include "asset_manager.h"
 #include "game.h"
 #include "node.h"
-#include "asset_manager.h"
 
 // Game window is 320x240, each node has 16 pixel for height and width.
 // The map is going to fully allocate the entire game window.
