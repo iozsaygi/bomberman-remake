@@ -129,7 +129,7 @@ void map_render(struct game_platformContext gamePlatformContext, struct assetMan
             if (current.nodeContext == BLOCKED) {
                 SDL_Rect textureRenderRect;
                 textureRenderRect.x = 48;
-                textureRenderRect.y = 47;
+                textureRenderRect.y = 48;
                 textureRenderRect.w = 16;
                 textureRenderRect.h = 17;
                 SDL_RenderCopy(gamePlatformContext.renderer, textures.textureAtlas, &textureRenderRect, &renderRect);
