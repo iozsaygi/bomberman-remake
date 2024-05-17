@@ -4,6 +4,7 @@
 #include "event_dispatcher.h"
 #include "game.h"
 #include "vector2.h"
+#include "asset_manager.h"
 
 struct player_transform {
     struct vector2 position;
@@ -26,6 +27,6 @@ void player_initialize();
 void player_tick(struct game_platformContext gamePlatformContext, enum eventDispatcher_eventType frameEvent, float deltaTime);
 
 // Will be called on each render pass.
-void player_render(struct game_platformContext gamePlatformContext);
+void player_render(struct game_platformContext gamePlatformContext, struct assetManager_textures textures);
 
 #endif// !PLAYER_H

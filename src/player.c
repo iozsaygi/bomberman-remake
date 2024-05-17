@@ -153,15 +153,21 @@ void player_tick(struct game_platformContext gamePlatformContext, enum eventDisp
     }
 }
 
-void player_render(struct game_platformContext gamePlatformContext) {
+void player_render(struct game_platformContext gamePlatformContext, struct assetManager_textures textures) {
     SDL_SetRenderDrawColor(gamePlatformContext.renderer, 0, 255, 0, 255);
-    SDL_Rect renderRect;
-    renderRect.w = (int) player_transform.scale.x;
-    renderRect.h = (int) player_transform.scale.y;
-    renderRect.x = (int) player_transform.position.x;
-    renderRect.y = (int) player_transform.position.y;
+    SDL_Rect renderTransformRect;
+    renderTransformRect.w = (int) player_transform.scale.x;
+    renderTransformRect.h = (int) player_transform.scale.y;
+    renderTransformRect.x = (int) player_transform.position.x;
+    renderTransformRect.y = (int) player_transform.position.y;
 
-    SDL_RenderFillRect(gamePlatformContext.renderer, &renderRect);
+    SDL_Rect texture_rect;
+    texture_rect.x = 0; //the x coordinate
+    texture_rect.y = 0; //the y coordinate
+    texture_rect.w = 50; //the width of the texture
+    texture_rect.h = 50; //the height of the texture
+
+    SDL_RenderCopy(gamePlatformContext.renderer, textures.textureAtlas, &renderTransformRect, &texture_rect);
 
     // Well, no idea how we need this. The main loop in scene should already handle color resetting
     // for each render pass.
