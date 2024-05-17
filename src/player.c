@@ -161,13 +161,13 @@ void player_render(struct game_platformContext gamePlatformContext, struct asset
     renderTransformRect.x = (int) player_transform.position.x;
     renderTransformRect.y = (int) player_transform.position.y;
 
-    SDL_Rect texture_rect;
-    texture_rect.x = 66; //the x coordinate
-    texture_rect.y = 0; //the y coordinate
-    texture_rect.w = 12; //the width of the texture
-    texture_rect.h = 14; //the height of the texture
+    SDL_Rect textureRenderRect;
+    textureRenderRect.x = 66;
+    textureRenderRect.y = 0;
+    textureRenderRect.w = 12;
+    textureRenderRect.h = 14;
 
-    SDL_RenderCopy(gamePlatformContext.renderer, textures.textureAtlas, &texture_rect, &renderTransformRect);
+    SDL_RenderCopy(gamePlatformContext.renderer, textures.textureAtlas, &textureRenderRect, &renderTransformRect);
 
     // Well, no idea how we need this. The main loop in scene should already handle color resetting
     // for each render pass.

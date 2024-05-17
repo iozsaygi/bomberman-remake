@@ -1,10 +1,10 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "asset_manager.h"
 #include "event_dispatcher.h"
 #include "game.h"
 #include "vector2.h"
-#include "asset_manager.h"
 
 struct player_transform {
     struct vector2 position;
