@@ -62,9 +62,9 @@ void bomb_render(struct game_platformContext gamePlatformContext, struct bomb_tr
 
     SDL_Rect textureRenderRect;
     textureRenderRect.x = 0;
-    textureRenderRect.y = 50;
+    textureRenderRect.y = 47;
     textureRenderRect.w = 17;
-    textureRenderRect.h = 15;
+    textureRenderRect.h = 17;
 
     SDL_RenderCopy(gamePlatformContext.renderer, textures.textureAtlas, &textureRenderRect, &renderTransformRect);
 
