@@ -51,15 +51,22 @@ void bomb_explode(struct bomb_transform* bombTransform) {
     debugger_log(TRACE, "Implement bomb explosion here");
 }
 
-void bomb_render(struct game_platformContext gamePlatformContext, struct bomb_transform* bombTransform) {
+void bomb_render(struct game_platformContext gamePlatformContext, struct bomb_transform* bombTransform, struct assetManager_textures textures) {
     SDL_SetRenderDrawColor(gamePlatformContext.renderer, 255, 0, 0, 255);
-    SDL_Rect renderRect;
-    renderRect.w = (int) bombTransform->scale.x;
-    renderRect.h = (int) bombTransform->scale.y;
-    renderRect.x = (int) bombTransform->position.x;
-    renderRect.y = (int) bombTransform->position.y;
 
-    SDL_RenderFillRect(gamePlatformContext.renderer, &renderRect);
+    SDL_Rect renderTransformRect;
+    renderTransformRect.w = (int) bombTransform->scale.x;
+    renderTransformRect.h = (int) bombTransform->scale.y;
+    renderTransformRect.x = (int) bombTransform->position.x;
+    renderTransformRect.y = (int) bombTransform->position.y;
+
+    SDL_Rect textureRenderRect;
+    textureRenderRect.x = 0;
+    textureRenderRect.y = 40;
+    textureRenderRect.w = 12;
+    textureRenderRect.h = 14;
+
+    SDL_RenderCopy(gamePlatformContext.renderer, textures.textureAtlas, &textureRenderRect, &renderTransformRect);
 
     // Well, no idea how we need this. The main loop in scene should already handle color resetting
     // for each render pass.
