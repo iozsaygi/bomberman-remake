@@ -1,6 +1,5 @@
 #include "asset_manager.h"
 #include "scene.h"
-#include <stdio.h>
 
 int main(int argc, char* argv[]) {
     // Try to initialize dependencies first.
@@ -16,8 +15,6 @@ int main(int argc, char* argv[]) {
             scene_initialize();
             // We have the game's platform context here. Start to update scene.
             scene_tick(game_platformContext);
-        } else {
-            scanf("%d");
         }
 
         // Clear the platform context after the main loop, we are done with it.
