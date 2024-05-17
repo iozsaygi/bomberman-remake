@@ -157,7 +157,7 @@ void player_render(struct game_platformContext gamePlatformContext, struct asset
     SDL_SetRenderDrawColor(gamePlatformContext.renderer, 0, 255, 0, 255);
     SDL_Rect renderTransformRect;
     renderTransformRect.w = (int) player_transform.scale.x;
-    renderTransformRect.h = (int) player_transform.scale.y2;
+    renderTransformRect.h = (int) player_transform.scale.y;
     renderTransformRect.x = (int) player_transform.position.x;
     renderTransformRect.y = (int) player_transform.position.y;
 
