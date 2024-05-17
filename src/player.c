@@ -164,8 +164,8 @@ void player_render(struct game_platformContext gamePlatformContext, struct asset
     SDL_Rect texture_rect;
     texture_rect.x = 66; //the x coordinate
     texture_rect.y = 0; //the y coordinate
-    texture_rect.w = 13; //the width of the texture
-    texture_rect.h = 15; //the height of the texture
+    texture_rect.w = 12; //the width of the texture
+    texture_rect.h = 14; //the height of the texture
 
     SDL_RenderCopy(gamePlatformContext.renderer, textures.textureAtlas, &texture_rect, &renderTransformRect);
 
