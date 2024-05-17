@@ -9,7 +9,7 @@ int main(int argc, char* argv[]) {
 
     // Try to load assets before entering the scene context.
     // Do not launch the game if asset operations are failed.
-    if (assetManager_loadTextures() == ASSETS_FAILED_TO_LOAD) {
+    if (assetManager_loadTextures(game_platformContext) == ASSETS_FAILED_TO_LOAD) {
         return -1;
     }
 
