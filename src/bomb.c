@@ -9,8 +9,8 @@ struct bomb_transform* bomb_createAt(struct vector2 position) {
     struct bomb_transform* bombTransform = (struct bomb_transform*) malloc(sizeof(struct bomb_transform));
     assert(bombTransform != NULL);
     bombTransform->position = position;
-    bombTransform->scale.x = DEFAULT_ENTITY_SCALE;
-    bombTransform->scale.y = DEFAULT_ENTITY_SCALE;
+    bombTransform->scale.x = BOMB_SCALE;
+    bombTransform->scale.y = BOMB_SCALE;
     bombTransform->timer = 0.0f;
     bombTransform->isExploded = 1;
 
