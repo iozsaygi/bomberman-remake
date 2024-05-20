@@ -15,6 +15,10 @@ Please see [this](https://en.wikipedia.org/wiki/Bomberman_(1983_video_game)) pag
 
 ![Added textures for player, map, and bomb](https://github.com/iozsaygi/bomberman-remake/blob/main/media/map-and-player-textures.png?raw=true)
 
+3. Added first non-functional enemy.
+
+![Added first non-functional enemy](https://github.com/iozsaygi/bomberman-remake/blob/main/media/first-enemy.png)
+
 ## Building
 
 ### Windows
