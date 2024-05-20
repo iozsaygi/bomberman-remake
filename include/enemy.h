@@ -1,9 +1,9 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
-#include "vector2.h"
-#include "game.h"
 #include "asset_manager.h"
+#include "game.h"
+#include "vector2.h"
 
 struct enemy_transform {
     struct vector2 position;
