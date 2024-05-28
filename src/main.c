@@ -17,6 +17,8 @@ int main(int argc, char* argv[]) {
             scene_tick(game_platformContext);
         }
 
+        scene_shutdown();
+
         // Clear the platform context after the main loop, we are done with it.
         game_clearPlatformContext();
     }
