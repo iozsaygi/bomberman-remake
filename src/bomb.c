@@ -1,6 +1,7 @@
 #include "bomb.h"
 #include "debugger.h"
 #include "entity_props.h"
+#include "scene.h"
 #include <assert.h>
 #include <stdlib.h>
 
@@ -46,9 +47,15 @@ void bomb_explode(struct bomb_transform* bombTransform) {
     bombTransform->scale.y = 0.0f;
     bombTransform->isExploded = 1;
 
-    // TODO: Apply damage to adjacent nodes.
+    struct enemy_transform* result[ENEMY_COUNT];
 
-    debugger_log(TRACE, "Implement bomb explosion here");
+    // TODO: 'Range' is temporarily hard-coded.
+    scene_getEnemiesInExplosionRange(bombTransform->position, 5.0f, result);
+    for (unsigned char i = 0; i < ENEMY_COUNT; i++) {
+        if (result[i] != NULL) {
+            enemy_shrink(result[i]);
+        }
+    }
 }
 
 void bomb_render(struct game_platformContext gamePlatformContext, struct bomb_transform* bombTransform, struct assetManager_textures textures) {
