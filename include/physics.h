@@ -1,6 +1,8 @@
 #ifndef PHYSICS_H
 #define PHYSICS_H
 
+#include "vector2.h"
+
 enum physics_collisionOpResult {
     ACTIVE_COLLISION,
     NO_COLLISION
@@ -15,5 +17,6 @@ struct physics_collisionBox {
 };
 
 enum physics_collisionOpResult physics_boundingBoxCollisionQuery(struct physics_collisionBox* first, struct physics_collisionBox* second);
+float physics_getDistance(struct vector2 first, struct vector2 second);
 
 #endif// !PHYSICS_H

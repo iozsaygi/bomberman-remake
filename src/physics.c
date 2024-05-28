@@ -1,4 +1,5 @@
 #include "physics.h"
+#include <math.h>
 
 enum physics_collisionOpResult physics_boundingBoxCollisionQuery(struct physics_collisionBox* first, struct physics_collisionBox* second) {
     int leftA, leftB;
@@ -33,4 +34,10 @@ enum physics_collisionOpResult physics_boundingBoxCollisionQuery(struct physics_
     }
 
     return ACTIVE_COLLISION;
+}
+
+float physics_getDistance(struct vector2 first, struct vector2 second) {
+    float deltaX = second.x - first.x;
+    float deltaY = second.y - first.y;
+    return sqrtf(deltaX * deltaX + deltaY * deltaY);
 }
