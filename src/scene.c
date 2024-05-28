@@ -2,6 +2,7 @@
 #include "debugger.h"
 #include "event_dispatcher.h"
 #include "map.h"
+#include "physics.h"
 #include "player.h"
 #include <assert.h>
 #include <stdlib.h>
@@ -89,6 +90,15 @@ void scene_tick(struct game_platformContext gamePlatformContext) {
         Uint32 frameTime = SDL_GetTicks() - frameStart;
         if (targetFrameDelay > frameTime) {
             SDL_Delay(targetFrameDelay - frameTime);
+        }
+    }
+}
+
+void scene_getEnemiesInExplosionRange(struct vector2 origin, float range, struct enemy_transform* results[ENEMY_COUNT]) {
+    for (int i = 0; i < ENEMY_COUNT; i++) {
+        float distance = physics_getDistance(origin, scene_enemyTransforms[i]->position);
+        if (distance < range) {
+            results[i] = scene_enemyTransforms[i];
         }
     }
 }
