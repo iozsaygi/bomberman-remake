@@ -11,6 +11,15 @@ struct enemy_transform* enemy_initialize(struct vector2 position, struct vector2
 void enemy_tick(struct enemy_transform* enemyTransform, float deltaTime) {
 }
 
+void enemy_shrink(struct enemy_transform* enemyTransform) {
+    enemyTransform->scale.x = 0;
+    enemyTransform->scale.y = 0;
+
+    // Move the enemy to a weird location.
+    enemyTransform->position.x = 800;
+    enemyTransform->position.y = 800;
+}
+
 void enemy_render(struct game_platformContext gamePlatformContext, struct enemy_transform* enemyTransform, struct assetManager_textures textures) {
     SDL_SetRenderDrawColor(gamePlatformContext.renderer, 0, 255, 0, 255);
     SDL_Rect renderTransformRect;
