@@ -3,9 +3,11 @@
 #include "event_dispatcher.h"
 #include "map.h"
 #include "player.h"
+#include <assert.h>
+#include <stdlib.h>
 
 struct bomb_transform* scene_lastPlantedBomb;
-struct enemy_transform* scene_enemyTransform;
+struct enemy_transform* scene_enemyTransforms[ENEMY_COUNT];
 
 void scene_initialize() {
     player_initialize();
@@ -19,13 +21,17 @@ void scene_initialize() {
     scene_lastPlantedBomb = bomb_createAt(bombAllocationPosition);
 
     // Allocate the enemies.
-    struct vector2 enemyPosition;
-    enemyPosition.x = 320;
-    enemyPosition.y = 140;
-    struct vector2 enemyScale;
-    enemyScale.x = DEFAULT_ENTITY_SCALE;
-    enemyScale.y = DEFAULT_ENTITY_SCALE;
-    scene_enemyTransform = enemy_initialize(enemyPosition, enemyScale);
+    for (int i = 0; i < ENEMY_COUNT; i++) {
+        scene_enemyTransforms[i] = malloc(sizeof(struct enemy_transform));
+        assert(scene_enemyTransforms[i] != NULL);
+        struct vector2 enemyPosition;
+        enemyPosition.x = 320;
+        enemyPosition.y = 140;
+        struct vector2 enemyScale;
+        enemyScale.x = DEFAULT_ENTITY_SCALE;
+        enemyScale.y = DEFAULT_ENTITY_SCALE;
+        scene_enemyTransforms[i] = enemy_initialize(enemyPosition, enemyScale);
+    }
 }
 
 void scene_requestBombAt(struct vector2 position) {
@@ -58,14 +64,21 @@ void scene_tick(struct game_platformContext gamePlatformContext) {
         if (scene_lastPlantedBomb != NULL) {
             bomb_tick(deltaTime, scene_lastPlantedBomb);
         }
-        enemy_tick(deltaTime);
+
+        for (int i = 0; i < ENEMY_COUNT; i++) {
+            enemy_tick(scene_enemyTransforms[i], deltaTime);
+        }
 
         SDL_SetRenderDrawColor(gamePlatformContext.renderer, 46, 138, 1, 255);
         SDL_RenderClear(gamePlatformContext.renderer);
 
         // Render order.
         map_render(gamePlatformContext, assetManager_textures);
-        enemy_render(gamePlatformContext, scene_enemyTransform, assetManager_textures);
+
+        for (int i = 0; i < ENEMY_COUNT; i++) {
+            enemy_render(gamePlatformContext, scene_enemyTransforms[i], assetManager_textures);
+        }
+
         player_render(gamePlatformContext, assetManager_textures);
         if (scene_lastPlantedBomb != NULL) {
             bomb_render(gamePlatformContext, scene_lastPlantedBomb, assetManager_textures);
@@ -77,5 +90,11 @@ void scene_tick(struct game_platformContext gamePlatformContext) {
         if (targetFrameDelay > frameTime) {
             SDL_Delay(targetFrameDelay - frameTime);
         }
+    }
+}
+
+void scene_shutdown() {
+    for (int i = 0; i < ENEMY_COUNT; i++) {
+        free(scene_enemyTransforms[i]);
     }
 }

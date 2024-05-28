@@ -8,7 +8,7 @@ struct enemy_transform* enemy_initialize(struct vector2 position, struct vector2
     return enemyTransform;
 }
 
-void enemy_tick(float deltaTime) {
+void enemy_tick(struct enemy_transform* enemyTransform, float deltaTime) {
 }
 
 void enemy_render(struct game_platformContext gamePlatformContext, struct enemy_transform* enemyTransform, struct assetManager_textures textures) {
