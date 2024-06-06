@@ -47,7 +47,7 @@ void bomb_explode(struct bomb_transform* bombTransform) {
     bombTransform->scale.y = 0.0f;
     bombTransform->isExploded = 1;
 
-    struct enemy_transform* result[ENEMY_COUNT];
+    struct enemy_transform* result[ENEMY_COUNT] = {0};
 
     // TODO: 'Range' is temporarily hard-coded.
     debugger_log(TRACE, "bomb-0");
@@ -56,7 +56,7 @@ void bomb_explode(struct bomb_transform* bombTransform) {
     for (int i = 0; i < ENEMY_COUNT; i++) {
         debugger_log(TRACE, "bomb-2");
         if (result[i] != NULL) {
-            debugger_log(TRACE, "bomb-3");
+            debugger_log(TRACE, "bomb-3: Shrinking enemy at index %d", i);
             enemy_shrink(result[i]);
         }
     }
