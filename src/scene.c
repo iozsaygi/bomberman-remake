@@ -26,13 +26,22 @@ void scene_initialize() {
         scene_enemyTransforms[i] = malloc(sizeof(struct enemy_transform));
         assert(scene_enemyTransforms[i] != NULL);
         struct vector2 enemyPosition;
-        enemyPosition.x = 320;
-        enemyPosition.y = 140;
+        enemyPosition.x = 0;
+        enemyPosition.y = 0;
         struct vector2 enemyScale;
         enemyScale.x = DEFAULT_ENTITY_SCALE;
         enemyScale.y = DEFAULT_ENTITY_SCALE;
         scene_enemyTransforms[i] = enemy_initialize(enemyPosition, enemyScale);
     }
+
+    // Manually initialize enemy positions, change it to randomized version later.
+    scene_enemyTransforms[0]->position.x = 320;
+    scene_enemyTransforms[0]->position.y = 140;
+    scene_enemyTransforms[1]->position.x = 150;
+    scene_enemyTransforms[1]->position.y = 100;
+    scene_enemyTransforms[2]->position.x = 270;
+    scene_enemyTransforms[2]->position.y = 250;
+
 }
 
 void scene_requestBombAt(struct vector2 position) {
