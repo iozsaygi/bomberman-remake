@@ -54,11 +54,13 @@ void bomb_explode(struct bomb_transform* bombTransform) {
     scene_getEnemiesInExplosionRange(bombTransform->position, 5.0f, result);
     debugger_log(TRACE, "bomb-1");
     for (int i = 0; i < ENEMY_COUNT; i++) {
+        debugger_log(TRACE, "bomb-2");
         if (result[i] != NULL) {
+            debugger_log(TRACE, "bomb-3");
             enemy_shrink(result[i]);
         }
     }
-    debugger_log(TRACE, "bomb-2");
+    debugger_log(TRACE, "bomb-5");
 }
 
 void bomb_render(struct game_platformContext gamePlatformContext, struct bomb_transform* bombTransform, struct assetManager_textures textures) {

@@ -1,4 +1,5 @@
 #include "enemy.h"
+#include "debugger.h"
 #include <stdlib.h>
 
 struct enemy_transform* enemy_initialize(struct vector2 position, struct vector2 scale) {
@@ -12,6 +13,7 @@ void enemy_tick(struct enemy_transform* enemyTransform, float deltaTime) {
 }
 
 void enemy_shrink(struct enemy_transform* enemyTransform) {
+    debugger_log(TRACE, "bomb-4");
     enemyTransform->scale.x = 0;
     enemyTransform->scale.y = 0;
 
