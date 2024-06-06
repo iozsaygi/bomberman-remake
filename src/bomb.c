@@ -53,7 +53,7 @@ void bomb_explode(struct bomb_transform* bombTransform) {
     debugger_log(TRACE, "bomb-0");
     scene_getEnemiesInExplosionRange(bombTransform->position, 5.0f, result);
     debugger_log(TRACE, "bomb-1");
-    for (unsigned char i = 0; i < ENEMY_COUNT; i++) {
+    for (int i = 0; i < ENEMY_COUNT; i++) {
         if (result[i] != NULL) {
             enemy_shrink(result[i]);
         }
