@@ -50,17 +50,12 @@ void bomb_explode(struct bomb_transform* bombTransform) {
     struct enemy_transform* result[ENEMY_COUNT] = {0};
 
     // TODO: 'Range' is temporarily hard-coded.
-    debugger_log(TRACE, "bomb-0");
     scene_getEnemiesInExplosionRange(bombTransform->position, 5.0f, result);
-    debugger_log(TRACE, "bomb-1");
     for (int i = 0; i < ENEMY_COUNT; i++) {
-        debugger_log(TRACE, "bomb-2");
         if (result[i] != NULL) {
-            debugger_log(TRACE, "bomb-3: Shrinking enemy at index %d", i);
             enemy_shrink(result[i]);
         }
     }
-    debugger_log(TRACE, "bomb-5");
 }
 
 void bomb_render(struct game_platformContext gamePlatformContext, struct bomb_transform* bombTransform, struct assetManager_textures textures) {
