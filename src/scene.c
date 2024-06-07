@@ -89,11 +89,11 @@ void scene_tick(struct game_platformContext gamePlatformContext) {
             enemy_render(gamePlatformContext, scene_enemyTransforms[i], assetManager_textures);
         }
 
-        player_render(gamePlatformContext, assetManager_textures);
         if (scene_lastPlantedBomb != NULL) {
             bomb_render(gamePlatformContext, scene_lastPlantedBomb, assetManager_textures);
         }
 
+        player_render(gamePlatformContext, assetManager_textures);
         SDL_RenderPresent(gamePlatformContext.renderer);
 
         Uint32 frameTime = SDL_GetTicks() - frameStart;
