@@ -40,7 +40,7 @@ void scene_initialize() {
     scene_enemyTransforms[1]->position.x = 240;
     scene_enemyTransforms[1]->position.y = 0;
     scene_enemyTransforms[2]->position.x = 0;
-    scene_enemyTransforms[2]->position.y = 0;
+    scene_enemyTransforms[2]->position.y = 240;
 
 }
 
