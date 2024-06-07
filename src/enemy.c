@@ -1,6 +1,9 @@
 #include "enemy.h"
 #include "debugger.h"
 #include <stdlib.h>
+#include "scene.h"
+
+int enemy_shrinkCount = 0;
 
 struct enemy_transform* enemy_initialize(struct vector2 position, struct vector2 scale) {
     struct enemy_transform* enemyTransform = (struct enemy_transform*) malloc(sizeof(struct enemy_transform));
@@ -19,6 +22,12 @@ void enemy_shrink(struct enemy_transform* enemyTransform) {
     // Move the enemy to a weird location.
     enemyTransform->position.x = 800;
     enemyTransform->position.y = 800;
+
+    enemy_shrinkCount++;
+    if (enemy_shrinkCount == ENEMY_COUNT) {
+        enemy_shrinkCount = 0;
+        scene_placeEnemies();
+    }
 }
 
 void enemy_render(struct game_platformContext gamePlatformContext, struct enemy_transform* enemyTransform, struct assetManager_textures textures) {

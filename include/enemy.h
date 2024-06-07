@@ -10,6 +10,8 @@ struct enemy_transform {
     struct vector2 scale;
 };
 
+extern int enemy_shrinkCount;
+
 struct enemy_transform* enemy_initialize(struct vector2 position, struct vector2 scale);
 void enemy_tick(struct enemy_transform* enemyTransform, float deltaTime);
 void enemy_shrink(struct enemy_transform* enemyTransform);

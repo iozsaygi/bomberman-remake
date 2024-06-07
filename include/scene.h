@@ -14,6 +14,7 @@ extern struct enemy_transform* scene_enemyTransforms[ENEMY_COUNT];
 
 void scene_initialize();
 void scene_requestBombAt(struct vector2 position);
+void scene_placeEnemies();
 void scene_tick(struct game_platformContext gamePlatformContext);
 void scene_getEnemiesInExplosionRange(struct vector2 origin, float range, struct enemy_transform* results[ENEMY_COUNT]);
 void scene_shutdown();

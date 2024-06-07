@@ -35,13 +35,7 @@ void scene_initialize() {
     }
 
     // Manually initialize enemy positions, change it to randomized version later.
-    scene_enemyTransforms[0]->position.x = 320;
-    scene_enemyTransforms[0]->position.y = 140;
-    scene_enemyTransforms[1]->position.x = 240;
-    scene_enemyTransforms[1]->position.y = 0;
-    scene_enemyTransforms[2]->position.x = 0;
-    scene_enemyTransforms[2]->position.y = 240;
-
+    scene_placeEnemies();
 }
 
 void scene_requestBombAt(struct vector2 position) {
@@ -49,6 +43,15 @@ void scene_requestBombAt(struct vector2 position) {
     bomb_explode(scene_lastPlantedBomb);
     bomb_plantAt(position, scene_lastPlantedBomb);
     debugger_log(TRACE, "Placed a new bomb at (%d, %d)", position.x, position.y);
+}
+
+void scene_placeEnemies() {
+    scene_enemyTransforms[0]->position.x = 320;
+    scene_enemyTransforms[0]->position.y = 140;
+    scene_enemyTransforms[1]->position.x = 240;
+    scene_enemyTransforms[1]->position.y = 0;
+    scene_enemyTransforms[2]->position.x = 0;
+    scene_enemyTransforms[2]->position.y = 240;
 }
 
 void scene_tick(struct game_platformContext gamePlatformContext) {
