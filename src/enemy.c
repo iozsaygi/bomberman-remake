@@ -16,9 +16,6 @@ void enemy_tick(struct enemy_transform* enemyTransform, float deltaTime) {
 }
 
 void enemy_shrink(struct enemy_transform* enemyTransform) {
-    enemyTransform->scale.x = 0;
-    enemyTransform->scale.y = 0;
-
     // Move the enemy to a weird location.
     enemyTransform->position.x = 800;
     enemyTransform->position.y = 800;
