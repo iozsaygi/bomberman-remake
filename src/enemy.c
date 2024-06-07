@@ -1,7 +1,7 @@
 #include "enemy.h"
 #include "debugger.h"
-#include <stdlib.h>
 #include "scene.h"
+#include <stdlib.h>
 
 int enemy_shrinkCount = 0;
 
