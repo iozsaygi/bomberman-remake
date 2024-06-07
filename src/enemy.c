@@ -24,7 +24,6 @@ void enemy_shrink(struct enemy_transform* enemyTransform) {
     if (enemy_shrinkCount == ENEMY_COUNT) {
         enemy_shrinkCount = 0;
         scene_placeEnemies();
-        debugger_log(TRACE, "Shrink count is %d", enemy_shrinkCount);
     }
 }
 
