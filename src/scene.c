@@ -54,6 +54,11 @@ void scene_placeEnemies() {
     scene_enemyTransforms[2]->position.y = 240;
 }
 
+void scene_reset() {
+    scene_placeEnemies();
+    player_initialize();
+}
+
 void scene_tick(struct game_platformContext gamePlatformContext) {
     unsigned char tickFlag = 1;
     const int targetFrameDelay = 1000 / gamePlatformContext.targetFrameRate;

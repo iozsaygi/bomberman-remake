@@ -1,5 +1,7 @@
 #include "enemy.h"
 #include "debugger.h"
+#include "physics.h"
+#include "player.h"
 #include "scene.h"
 #include <stdlib.h>
 
@@ -13,6 +15,23 @@ struct enemy_transform* enemy_initialize(struct vector2 position, struct vector2
 }
 
 void enemy_tick(struct enemy_transform* enemyTransform, float deltaTime) {
+    // Check for collision against player.
+    struct physics_collisionBox playerCollisionBox;
+    playerCollisionBox.w = (int) player_transform.scale.x;
+    playerCollisionBox.h = (int) player_transform.scale.y;
+    playerCollisionBox.x = (int) player_transform.position.x;
+    playerCollisionBox.y = (int) player_transform.position.y;
+
+    struct physics_collisionBox enemyCollisionBox;
+    enemyCollisionBox.w = (int) enemyTransform->scale.x;
+    enemyCollisionBox.h = (int) enemyTransform->scale.y;
+    enemyCollisionBox.x = (int) enemyTransform->position.x;
+    enemyCollisionBox.y = (int) enemyTransform->position.y;
+
+    enum physics_collisionOpResult opResult = physics_boundingBoxCollisionQuery(&playerCollisionBox, &enemyCollisionBox);
+    if (opResult == ACTIVE_COLLISION) {
+        scene_reset();
+    }
 }
 
 void enemy_shrink(struct enemy_transform* enemyTransform) {
