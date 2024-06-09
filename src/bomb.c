@@ -50,7 +50,7 @@ void bomb_explode(struct bomb_transform* bombTransform) {
     struct enemy_transform* result[ENEMY_COUNT] = {0};
 
     // TODO: 'Range' is temporarily hard-coded.
-    scene_getEnemiesInExplosionRange(bombTransform->position, 50.0f, result);
+    scene_getEnemiesInExplosionRange(bombTransform->position, 45.0f, result);
     for (int i = 0; i < ENEMY_COUNT; i++) {
         if (result[i] != NULL) {
             enemy_shrink(result[i]);
