@@ -5,9 +5,18 @@
 #include "game.h"
 #include "vector2.h"
 
+enum enemy_movementDirection {
+    NONE,
+    UP,
+    DOWN,
+    LEFT,
+    RIGHT
+};
+
 struct enemy_transform {
     struct vector2 position;
     struct vector2 scale;
+    enum enemy_movementDirection movementDirection;
 };
 
 extern int enemy_shrinkCount;

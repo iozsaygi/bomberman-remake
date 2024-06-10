@@ -11,6 +11,7 @@ struct enemy_transform* enemy_initialize(struct vector2 position, struct vector2
     struct enemy_transform* enemyTransform = (struct enemy_transform*) malloc(sizeof(struct enemy_transform));
     enemyTransform->position = position;
     enemyTransform->scale = scale;
+    enemyTransform->movementDirection = NONE;
     return enemyTransform;
 }
 
@@ -31,6 +32,36 @@ void enemy_tick(struct enemy_transform* enemyTransform, float deltaTime) {
     enum physics_collisionOpResult opResult = physics_boundingBoxCollisionQuery(&playerCollisionBox, &enemyCollisionBox);
     if (opResult == ACTIVE_COLLISION) {
         scene_reset();
+    }
+
+    // Movement.
+    const float movementSpeed = 2.5f;
+    switch (enemyTransform->movementDirection) {
+        case UP:
+            enemyTransform->position.y -= movementSpeed * deltaTime;
+            break;
+        case DOWN:
+            enemyTransform->position.y += movementSpeed * deltaTime;
+            break;
+        case LEFT:
+            enemyTransform->position.x -= movementSpeed * deltaTime;
+            break;
+        case RIGHT:
+            enemyTransform->position.x += movementSpeed * deltaTime;
+            break;
+        case NONE:
+            break;
+    }
+
+    // Check for screen collision.
+    if (enemyTransform->position.x <= 0) {
+        enemyTransform->movementDirection = RIGHT;
+    } else if (enemyTransform->position.x >= (float)game_platformContext.width) {
+        enemyTransform->movementDirection = LEFT;
+    } else if (enemyTransform->position.y <= 0) {
+        enemyTransform->movementDirection = DOWN;
+    } else if (enemyTransform->position.y >= (float)game_platformContext.height) {
+        enemyTransform->movementDirection = UP;
     }
 }
 
