@@ -34,6 +34,17 @@ void enemy_tick(struct enemy_transform* enemyTransform, float deltaTime) {
         scene_reset();
     }
 
+    // Check for screen collision.
+    if (enemyTransform->position.x <= 0) {
+        enemyTransform->movementDirection = MD_RIGHT;
+    } else if (enemyTransform->position.x >= (float)game_platformContext.width) {
+        enemyTransform->movementDirection = MD_LEFT;
+    } else if (enemyTransform->position.y <= 0) {
+        enemyTransform->movementDirection = MD_DOWN;
+    } else if (enemyTransform->position.y >= (float)game_platformContext.height) {
+        enemyTransform->movementDirection = MD_UP;
+    }
+
     // Movement.
     const float movementSpeed = 20.0f;
     switch (enemyTransform->movementDirection) {
@@ -51,17 +62,6 @@ void enemy_tick(struct enemy_transform* enemyTransform, float deltaTime) {
             break;
         case MD_NONE:
             break;
-    }
-
-    // Check for screen collision.
-    if (enemyTransform->position.x <= 0) {
-        enemyTransform->movementDirection = MD_RIGHT;
-    } else if (enemyTransform->position.x >= (float)game_platformContext.width) {
-        enemyTransform->movementDirection = MD_LEFT;
-    } else if (enemyTransform->position.y <= 0) {
-        enemyTransform->movementDirection = MD_DOWN;
-    } else if (enemyTransform->position.y >= (float)game_platformContext.height) {
-        enemyTransform->movementDirection = MD_UP;
     }
 }
 
