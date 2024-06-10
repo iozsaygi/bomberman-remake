@@ -47,7 +47,7 @@ void scene_requestBombAt(struct vector2 position) {
 
 void scene_placeEnemies() {
     scene_enemyTransforms[0]->position.x = 320;
-    scene_enemyTransforms[0]->position.y = 130;
+    scene_enemyTransforms[0]->position.y = 125;
     scene_enemyTransforms[0]->movementDirection = MD_LEFT;
     scene_enemyTransforms[1]->position.x = 255;
     scene_enemyTransforms[1]->position.y = 0;
