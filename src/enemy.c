@@ -38,11 +38,11 @@ void enemy_tick(struct enemy_transform* enemyTransform, float deltaTime) {
     // Check for screen collision.
     if (enemyTransform->position.x <= 0) {
         enemyTransform->movementDirection = MD_RIGHT;
-    } else if (enemyTransform->position.x >= (float)game_platformContext.width + DEFAULT_ENTITY_SCALE) {
+    } else if (enemyTransform->position.x >= (float)game_platformContext.width - DEFAULT_ENTITY_SCALE) {
         enemyTransform->movementDirection = MD_LEFT;
     } else if (enemyTransform->position.y <= 0) {
         enemyTransform->movementDirection = MD_DOWN;
-    } else if (enemyTransform->position.y >= (float)game_platformContext.height + DEFAULT_ENTITY_SCALE) {
+    } else if (enemyTransform->position.y >= (float)game_platformContext.height - DEFAULT_ENTITY_SCALE) {
         enemyTransform->movementDirection = MD_UP;
     }
 
