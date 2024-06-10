@@ -35,19 +35,19 @@ void enemy_tick(struct enemy_transform* enemyTransform, float deltaTime) {
     }
 
     // Movement.
-    const float movementSpeed = 2.5f;
+    const float movementSpeed = 2.0f;
     switch (enemyTransform->movementDirection) {
         case MD_UP:
-            enemyTransform->position.y -= movementSpeed * deltaTime;
+            enemyTransform->position.y /= movementSpeed * deltaTime;
             break;
         case MD_DOWN:
-            enemyTransform->position.y += movementSpeed * deltaTime;
+            enemyTransform->position.y *= movementSpeed * deltaTime;
             break;
         case MD_LEFT:
-            enemyTransform->position.x -= movementSpeed * deltaTime;
+            enemyTransform->position.x /= movementSpeed * deltaTime;
             break;
         case MD_RIGHT:
-            enemyTransform->position.x += movementSpeed * deltaTime;
+            enemyTransform->position.x *= movementSpeed * deltaTime;
             break;
         case MD_NONE:
             break;
