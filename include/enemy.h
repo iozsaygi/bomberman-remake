@@ -6,11 +6,11 @@
 #include "vector2.h"
 
 enum enemy_movementDirection {
-    NONE,
-    UP,
-    DOWN,
-    LEFT,
-    RIGHT
+    MD_NONE,
+    MD_UP,
+    MD_DOWN,
+    MD_LEFT,
+    MD_RIGHT
 };
 
 struct enemy_transform {

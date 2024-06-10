@@ -37,31 +37,31 @@ void enemy_tick(struct enemy_transform* enemyTransform, float deltaTime) {
     // Movement.
     const float movementSpeed = 2.5f;
     switch (enemyTransform->movementDirection) {
-        case UP:
+        case MD_UP:
             enemyTransform->position.y -= movementSpeed * deltaTime;
             break;
-        case DOWN:
+        case MD_DOWN:
             enemyTransform->position.y += movementSpeed * deltaTime;
             break;
-        case LEFT:
+        case MD_LEFT:
             enemyTransform->position.x -= movementSpeed * deltaTime;
             break;
-        case RIGHT:
+        case MD_RIGHT:
             enemyTransform->position.x += movementSpeed * deltaTime;
             break;
-        case NONE:
+        case MD_NONE:
             break;
     }
 
     // Check for screen collision.
     if (enemyTransform->position.x <= 0) {
-        enemyTransform->movementDirection = RIGHT;
+        enemyTransform->movementDirection = MD_RIGHT;
     } else if (enemyTransform->position.x >= (float)game_platformContext.width) {
-        enemyTransform->movementDirection = LEFT;
+        enemyTransform->movementDirection = MD_LEFT;
     } else if (enemyTransform->position.y <= 0) {
-        enemyTransform->movementDirection = DOWN;
+        enemyTransform->movementDirection = MD_DOWN;
     } else if (enemyTransform->position.y >= (float)game_platformContext.height) {
-        enemyTransform->movementDirection = UP;
+        enemyTransform->movementDirection = MD_UP;
     }
 }
 
