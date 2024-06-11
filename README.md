@@ -32,6 +32,13 @@ Please see [this](https://en.wikipedia.org/wiki/Bomberman_(1983_video_game)) pag
 6. ``cmake -G "Visual Studio 17 2022" -A x64 ..``
 7. ``msbuild /m /p:Configuration=Debug /p:Platform=x64 bomberman_remake.sln``
 
+## Possible improvements to make
+
+- AI with path-finding
+- Better collision handling
+- Gameplay animations
+- Procedural levels
+
 ## License
 
 [MIT License](https://github.com/iozsaygi/bomberman-remake/blob/main/LICENSE)
